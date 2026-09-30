@@ -10,10 +10,16 @@
   - Aktuell gibt es keinen Weg, Starter/Essential/Investor zu buchen — weder Knopf noch Anbieter
   - Blockiert zusammen mit dem Beta-Ende den regulären Betrieb ab 2027
 
-- [ ] **Beta-Ende 31.12.2026 absichern** - harte Kante, betrifft alle Konten
+- [ ] **Beta-Ende 31.12.2026 absichern** - harte Kante, betrifft ausnahmslos alle Konten
   - Danach fällt jedes Konto auf "keiner", also Lesezugriff. Früher war der Rückfall "starter" und weiter nutzbar
   - Entweder Zahlung bis dahin fertig, oder `beta_essential_bis` in der Tabelle `abonnements` verlängern
   - Die AGB versprechen eine Vorwarnung per E-Mail — dieser Versand existiert nicht
+  - **Prüfung 30.09.2026:** `effektiver_tarif()` nimmt `greatest(gebuchter Tarif,
+    Beta-Schenkung)`. Am 01.01.2027 ist die Schenkung `keiner`, und weil es keine
+    Zahlungsabwicklung gibt, hat niemand etwas gebucht — es trifft also jedes Konto
+    gleichzeitig, ohne Ausweichmöglichkeit für die Betroffenen.
+  - Es gibt keinen Code, der auf `beta_essential_bis` reagiert, bevor das Datum
+    erreicht ist. Die Grenze schlägt ohne Ankündigung zu.
 
 - [ ] **Auth-Mails auf Deutsch und eigenes Branding** - Supabase Dashboard > Authentication > Email Templates
   - Registrierung, Passwort-Reset und Magic Link kommen als englische Standardvorlage von noreply@mail.app.supabase.io
@@ -23,6 +29,12 @@
 - [ ] **Wartungserinnerungen scharf schalten** - Mailversand steht, Zeitplan fehlt
   - Die Funktion `wartungserinnerung` ist ausgeliefert und aktiv, ruft aber niemand auf
   - Cron-Job anlegen wie bei der Wartelisten-Übersicht; Achtung: verify_jwt steht dort noch auf an
+  - **Prüfung 30.09.2026:** Die Funktion antwortet mit 401, ist also ausgerollt und
+    korrekt per `x-cron-secret` abgesichert. Es fehlt ausschliesslich der Auslöser.
+  - Das ist keine Kleinigkeit: Die Website verkauft die Funktion wörtlich
+    ("Feingrund meldet sich per E-Mail, bevor etwas fällig wird") und der Tarif
+    Wohneigentum führt "Wartungsplanung inkl. Erinnerung" als Leistung auf.
+    Solange kein Zeitplan läuft, wird eine bezahlte Zusage nicht erfüllt.
 
 - [ ] **Bestätigungsmail für Zitate in den Rückmeldungen** - schriftliches Einverständnis einholen
   - Alex J. hat den Wortlaut am 28.09.2026 telefonisch bestätigt — schriftlich noch nicht
@@ -35,6 +47,37 @@
   - Bestätigt gleichzeitig, dass die Adresse stimmt und dem Eintrag zugestimmt wurde
   - Der Mailversand über send.feingrund.ch steht bereits
 
+- [ ] **Zeitpläne in die Versionierung holen** - aus dem Code nicht nachvollziehbar
+  - Keine Migration legt einen Cron-Job an. Ob in der Datenbank welche laufen,
+    lässt sich von aussen nicht prüfen — die Wartelisten-Übersicht wurde am
+    27.09.2026 über die Supabase-Oberfläche eingerichtet, nicht im Code.
+  - Folge: Bei einem Neuaufbau der Datenbank fehlen sie stillschweigend, und
+    niemand sieht dem Projekt an, was wann laufen sollte.
+  - Als Migration mit `cron.schedule()` nachziehen, sobald pg_cron aktiv ist
+
+- [ ] **Verwaiste Dateien im Speicher verhindern** - wächst unbemerkt
+  - `useDocuments.ts` lädt erst die Datei hoch, legt dann die Zeile in `documents`
+    an. Scheitert der zweite Schritt, wird die Datei sauber entfernt — bricht aber
+    der Browser dazwischen ab (Tab zu, Verbindung weg), bleibt sie liegen.
+  - Solche Dateien sind für den Nutzer unsichtbar und zählen nicht gegen die
+    Quote, weil die aus `documents` gerechnet wird. Sie verbrauchen Speicher,
+    den du bezahlst.
+  - Zweiter, verwandter Punkt: Die Speicherregel prüft nur das Pfadpräfix
+    (`{user_id}/…`). Wer die Storage-API direkt anspricht, kann beliebig viel in
+    den eigenen Ordner laden, ohne je eine `documents`-Zeile anzulegen. Setzt
+    Absicht voraus, ist aber derselbe blinde Fleck.
+  - Lösungsrichtung: eine wiederkehrende Aufräumung, die Objekte ohne passende
+    `documents`-Zeile nach einer Schonfrist entfernt
+
+- [ ] **Tarif-Logik testen** - `src/lib/tarif.ts` ist ungetestet
+  - Von 11'215 Zeilen Anwendungscode ist genau ein Modul durch Tests gedeckt:
+    `calculations.ts` (353 Zeilen Code, 393 Zeilen Test — gut gemacht).
+  - Ungetestet sind unter anderem `tarif.ts`, `format.ts`, `labels.ts`,
+    `bewertung.ts` und `standardanlagen.ts`.
+  - `tarif.ts` zuerst: Es entscheidet, was ein Konto darf, und wird nach der
+    Umbenennung auf Wohneigentum und der Einführung von "keiner" von mehreren
+    Stellen gelesen. Ein Fehler dort ist teuer und fällt spät auf.
+
 ## Waiting On
 
 - [ ] **Rechtstexte fachlich gegenlesen lassen** - Anwalt oder Rechtsberatung
@@ -43,6 +86,14 @@
   - Spätestens vor dem ersten zahlenden Kunden
 
 ## Someday
+- [ ] **Veralteten Kommentar zur Speichergrenze berichtigen** -
+  `20260812120000_tarife.sql:38` sagt, die Speichersumme sei "rein informativ"
+  und werde nicht durchgesetzt. Seit `20260812150000` prüft der Trigger sie
+  sehr wohl. Wer den Kommentar liest, zieht den falschen Schluss.
+
+- [ ] **DSGVO und DSG nebeneinander nennen** - die App schreibt "DSGVO-konform".
+  Für ein Schweizer Angebot ist das revidierte DSG die nähere Referenz, für
+  Kundschaft in DE/AT die DSGVO. Beides zu nennen wäre genauer als eines davon.
 
 - [ ] **Massnahmenplan mit echten Daten durchklicken** - bisher nur mit Testdaten geprüft
 
