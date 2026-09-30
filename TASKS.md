@@ -35,22 +35,6 @@
   - Bestätigt gleichzeitig, dass die Adresse stimmt und dem Eintrag zugestimmt wurde
   - Der Mailversand über send.feingrund.ch steht bereits
 
-- [ ] **info@feingrund.ch als Absender in Gmail hinterlegen** - letzter Schritt
-  - Postfach, Weiterleitung und Zustellung stehen seit 30.09.2026 und sind
-    end-to-end geprüft: Absender → mx1.mail.hostpoint.ch → info@feingrund.ch
-    → Weiterleitung → Gmail-Posteingang
-  - Offen ist nur noch das Antworten: Gmail → Einstellungen → Konten und
-    Import → "Senden als" → weitere Adresse hinzufügen
-    - SMTP `asmtp.mail.hostpoint.ch`, Port 587, STARTTLS
-    - Benutzername `info@feingrund.ch`, Passwort wie beim Postfach
-    - Gmail schickt einen Bestätigungscode an info@, der über die
-      Weiterleitung ankommt
-  - Merke fürs nächste Mal: Eine Weiterleitung lässt sich **nicht** testen,
-    indem man aus dem Zielkonto an die weitergeleitete Adresse schreibt.
-    Gmail erkennt die zurückkommende Kopie an der gleichen Message-ID und
-    verwirft sie stillschweigend. Der Test muss von einem anderen Absender
-    ausgehen.
-
 ## Waiting On
 
 - [ ] **Rechtstexte fachlich gegenlesen lassen** - Anwalt oder Rechtsberatung
@@ -66,6 +50,19 @@
   - Code liegt unter `pages/Investor`, die Route fehlt absichtlich
 
 ## Done
+
+- [x] **info@feingrund.ch eingerichtet** (30.09.2026) - Postfach, Weiterleitung
+  an Gmail und Versand ueber "Senden als" stehen und sind geprueft. Die Sperre
+  der Cloud Office-Gruppe, an der es am 28.09. scheiterte, hat sich mit dem
+  Umzug auf das Hostpoint-Webhosting von selbst erledigt; das Support-Ticket
+  ist gegenstandslos. Damit nennt das Impressum eine Adresse, die es gibt.
+  - Zwei Stolpersteine fuers naechste Mal: Gmail schlaegt als SMTP-Server den
+    MX-Eintrag vor (`mx2.mail.hostpoint.ch`), der auf Port 587 gar nicht
+    antwortet -- richtig ist `asmtp.mail.hostpoint.ch`, Nutzername die
+    vollstaendige Adresse.
+  - Eine Weiterleitung laesst sich nicht testen, indem man aus dem Zielkonto
+    an die weitergeleitete Adresse schreibt: Gmail erkennt die zurueckkommende
+    Kopie an der gleichen Message-ID und verwirft sie stillschweigend.
 
 - [x] **Manifest-Beschreibung korrigiert** (30.09.2026) - sagt jetzt
   "Immobilieneigentümer/innen in der Schweiz, Deutschland und Österreich"
