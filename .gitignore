@@ -1,0 +1,8 @@
+node_modules/
+dist/*
+!dist/.gitkeep
+.DS_Store
+*.log
+
+# Maschinenlokale Berechtigungen, gehören nicht in die Ablage
+.claude/settings.local.json

@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ImmoSignal – Dein Schweizer Immobilien-Newsletter Juni 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:       #141210;
+    --paper:     #faf9f6;
+    --cream:     #f2efe8;
+    --rule:      #d8d3c8;
+    --gold:      #b8922a;
+    --gold-lt:   #f5ead0;
+    --green:     #1e5c3a;
+    --green-lt:  #e0ede5;
+    --red:       #b83333;
+    --red-lt:    #fdeaea;
+    --muted:     #7a7367;
+    --serif:     'DM Serif Display', Georgia, serif;
+    --sans:      'Inter', system-ui, sans-serif;
+  }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── OUTER WRAPPER ─────────────────────────────── */
+  .wrapper {
+    max-width: 640px;
+    margin: 32px auto;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+  }
+
+  /* ── MASTHEAD ──────────────────────────────────── */
+  .masthead {
+    background: var(--ink);
+    padding: 28px 40px 24px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    border-bottom: 3px solid var(--gold);
+  }
+  .masthead-brand {
+    font-family: var(--serif);
+    font-size: 28px;
+    color: #fff;
+    letter-spacing: -0.3px;
+    line-height: 1;
+  }
+  .masthead-brand span { color: var(--gold); }
+  .masthead-meta {
+    text-align: right;
+    font-size: 10.5px;
+    font-weight: 500;
+    color: #999;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+    line-height: 1.5;
+    white-space: nowrap;
+  }
+
+  /* ── SUBJECT PREVIEW STRIP ─────────────────────── */
+  .subject-strip {
+    background: var(--gold-lt);
+    border-bottom: 1px solid var(--rule);
+    padding: 10px 40px;
+  }
+  .subject-strip p {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .subject-option {
+    font-size: 13px;
+    color: var(--ink);
+    padding: 2px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .subject-option .emoji { font-size: 14px; }
+  .subject-option.active { font-weight: 600; }
+  .subject-option.active::after {
+    content: '← Empfohlen';
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--gold);
+    background: var(--gold-lt);
+    border: 1px solid var(--gold);
+    padding: 1px 7px;
+    border-radius: 100px;
+  }
+
+  /* ── CONTENT AREA ──────────────────────────────── */
+  .content { padding: 36px 40px; }
+
+  /* ── GREETING ──────────────────────────────────── */
+  .greeting {
+    font-family: var(--serif);
+    font-size: 26px;
+    color: var(--ink);
+    line-height: 1.25;
+    margin-bottom: 14px;
+    letter-spacing: -0.2px;
+  }
+  .greeting em { font-style: italic; color: var(--gold); }
+
+  .intro {
+    font-size: 14.5px;
+    color: #3a3630;
+    line-height: 1.7;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 28px;
+  }
+  .intro strong { color: var(--ink); font-weight: 600; }
+
+  /* ── DIVIDER LABEL ─────────────────────────────── */
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .section-label span {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  /* ── NEWS CARDS ────────────────────────────────── */
+  .news-card {
+    border-left: 3px solid var(--rule);
+    padding: 0 0 24px 18px;
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .news-card:last-child { margin-bottom: 0; padding-bottom: 0; }
+  .news-card.accent-gold { border-left-color: var(--gold); }
+  .news-card.accent-green { border-left-color: var(--green); }
+  .news-card.accent-red { border-left-color: var(--red); }
+
+  .news-card .eyebrow {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .news-card.accent-gold .eyebrow { color: var(--gold); }
+  .news-card.accent-green .eyebrow { color: var(--green); }
+  .news-card.accent-red .eyebrow { color: var(--red); }
+
+  .news-card h2 {
+    font-family: var(--serif);
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 10px;
+    color: var(--ink);
+  }
+  .news-card p {
+    font-size: 14px;
+    color: #3d3830;
+    line-height: 1.7;
+    margin-bottom: 10px;
+  }
+  .news-card p:last-child { margin-bottom: 0; }
+  .news-card strong { font-weight: 600; color: var(--ink); }
+
+  /* INLINE STAT PILL */
+  .stat-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 10px 0 12px;
+  }
+  .stat-pill {
+    background: var(--cream);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+  .stat-pill .val {
+    display: block;
+    font-family: var(--serif);
+    font-size: 18px;
+    line-height: 1.1;
+    color: var(--gold);
+  }
+  .stat-pill .val.up { color: var(--red); }
+  .stat-pill .val.down { color: var(--green); }
+
+  /* HIGHLIGHT BOX */
+  .highlight {
+    background: var(--gold-lt);
+    border: 1px solid #e0c97a;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 12px 0;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: #4a3a10;
+  }
+  .highlight strong { font-weight: 600; color: #3a2b08; }
+
+  .highlight-green {
+    background: var(--green-lt);
+    border-color: #a8c9b6;
+    color: #153d28;
+  }
+  .highlight-green strong { color: #0e2c1d; }
+
+  .highlight-red {
+    background: var(--red-lt);
+    border-color: #e8b0b0;
+    color: #5a1a1a;
+  }
+
+  /* TAG */
+  .tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 100px;
+    margin-right: 4px;
+  }
+  .tag-gold { background: var(--gold-lt); color: #7a5f10; border: 1px solid #d4a84a; }
+  .tag-green { background: var(--green-lt); color: var(--green); border: 1px solid #a8c9b6; }
+  .tag-red { background: var(--red-lt); color: var(--red); border: 1px solid #e0a0a0; }
+
+  /* ── REGION BADGES ─────────────────────────────── */
+  .region-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 10px 0 14px;
+  }
+  .region-badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 100px;
+    border: 1px solid var(--rule);
+    color: var(--muted);
+    background: var(--cream);
+  }
+  .region-badge.active {
+    background: var(--ink);
+    color: #fff;
+    border-color: var(--ink);
+  }
+
+  /* ── DIVIDER ───────────────────────────────────── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 28px 0;
+  }
+
+  /* ── SURVEY BOX ────────────────────────────────── */
+  .survey-box {
+    background: var(--ink);
+    border-radius: 8px;
+    padding: 28px 30px;
+    margin: 28px 0;
+  }
+  .survey-box h3 {
+    font-family: var(--serif);
+    font-size: 20px;
+    color: #fff;
+    font-weight: 400;
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  .survey-box p {
+    font-size: 13px;
+    color: #aaa;
+    margin-bottom: 18px;
+  }
+  .survey-options {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+  .survey-btn {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 6px;
+    padding: 11px 16px;
+    font-family: var(--sans);
+    font-size: 13.5px;
+    font-weight: 500;
+    color: #e8e5df;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+    position: relative;
+    overflow: hidden;
+  }
+  .survey-btn:hover {
+    background: rgba(184,146,42,0.2);
+    border-color: var(--gold);
+    color: #fff;
+  }
+  .survey-btn .btn-icon {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    text-align: center;
+    line-height: 19px;
+    font-size: 11px;
+    margin-right: 10px;
+    vertical-align: middle;
+    flex-shrink: 0;
+  }
+
+  /* RESULT STATE */
+  .survey-result {
+    display: none;
+    text-align: center;
+    padding: 16px 0 4px;
+  }
+  .survey-result .checkmark {
+    font-size: 36px;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .survey-result p {
+    font-size: 13.5px;
+    color: #ccc;
+    margin-bottom: 0;
+  }
+  .survey-result strong { color: #fff; }
+
+  /* BAR RESULTS */
+  .bar-result {
+    margin-top: 16px;
+  }
+  .bar-item { margin-bottom: 10px; }
+  .bar-label-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #ccc;
+    margin-bottom: 4px;
+  }
+  .bar-track {
+    background: rgba(255,255,255,0.1);
+    border-radius: 4px;
+    height: 8px;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    background: var(--gold);
+    width: 0%;
+    transition: width 0.8s cubic-bezier(0.4,0,0.2,1);
+  }
+  .bar-fill.mine { background: #4caf7d; }
+
+  /* ── CTA ───────────────────────────────────────── */
+  .cta-block {
+    background: linear-gradient(135deg, var(--green) 0%, #2d7a50 100%);
+    border-radius: 8px;
+    padding: 30px 30px 28px;
+    text-align: center;
+    margin: 28px 0 0;
+  }
+  .cta-block h3 {
+    font-family: var(--serif);
+    font-size: 22px;
+    color: #fff;
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+  .cta-block p {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: #fff;
+    color: var(--green);
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 700;
+    padding: 13px 30px;
+    border-radius: 6px;
+    text-decoration: none;
+    letter-spacing: 0.2px;
+    transition: transform 0.15s, box-shadow 0.15s;
+    cursor: pointer;
+    border: none;
+  }
+  .cta-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  }
+  .cta-note {
+    font-size: 11px;
+    color: rgba(255,255,255,0.55);
+    margin-top: 10px;
+  }
+
+  /* ── INSIDER TIP ───────────────────────────────── */
+  .insider-tip {
+    border: 1.5px dashed var(--gold);
+    border-radius: 8px;
+    padding: 18px 20px;
+    position: relative;
+    margin: 10px 0;
+  }
+  .insider-tip .tip-badge {
+    position: absolute;
+    top: -11px;
+    left: 16px;
+    background: var(--gold);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+    padding: 2px 10px;
+    border-radius: 100px;
+  }
+  .insider-tip p {
+    font-size: 13.5px;
+    color: #3d3525;
+    line-height: 1.65;
+  }
+  .insider-tip strong { color: var(--ink); }
+
+  /* ── FOOTER ────────────────────────────────────── */
+  .footer {
+    background: var(--cream);
+    border-top: 1px solid var(--rule);
+    padding: 20px 40px;
+    text-align: center;
+  }
+  .footer p {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .footer a { color: var(--gold); text-decoration: none; font-weight: 500; }
+
+  /* ── MOBILE ────────────────────────────────────── */
+  @media (max-width: 660px) {
+    .wrapper { margin: 0; border: none; }
+    .masthead, .content, .footer { padding-left: 20px; padding-right: 20px; }
+    .subject-strip { padding-left: 20px; padding-right: 20px; }
+    .stat-row { gap: 7px; }
+    .survey-box, .cta-block { padding: 22px 18px; }
+    .survey-options { gap: 7px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div class="masthead-brand">Immo<span>Signal</span></div>
+    <div class="masthead-meta">
+      Ausgabe Juni 2026<br>
+      Für Immobilieninvestoren
+    </div>
+  </div>
+
+  <!-- BETREFFZEILEN PREVIEW -->
+  <div class="subject-strip">
+    <p>📬 Betreffzeilen — A/B-Test Vorschläge</p>
+    <div class="subject-option">
+      <span class="emoji">🏦</span>
+      Nullzins & volle Kasse: Jetzt in Schweizer Liegenschaften investieren?
+    </div>
+    <div class="subject-option active">
+      <span class="emoji">📈</span>
+      +3.5 % Wertzuwachs, 0 % Leitzins – was das für dein Portfolio bedeutet
+    </div>
+    <div class="subject-option">
+      <span class="emoji">🗳️</span>
+      14. Juni entscheidet: Diese Abstimmung verändert den Schweizer Immobilienmarkt
+    </div>
+  </div>
+
+  <!-- HAUPTINHALT -->
+  <div class="content">
+
+    <!-- GREETING & INTRO -->
+    <h1 class="greeting">Hoi,<br><em>Marktlage, Rendite & Regulierung</em> —<br>was du jetzt wissen musst.</h1>
+
+    <p class="intro">
+      Der Schweizer Immobilienmarkt sendet gemischte Signale: <strong>Rekordtiefe Zinsen, steigende Preise, historisch leere Mietmärkte</strong> — und am 14. Juni 2026 stehen mehrere Abstimmungen an, die das Spielfeld für Investoren nachhaltig verändern könnten. Wir sortieren für dich die Fakten von Lärm, Kanton für Kanton, ohne Schönfärberei.
+    </p>
+
+    <!-- NEWS 1: ZINSEN -->
+    <div class="section-label"><span>Thema 1 · Zinsen & Finanzierung</span></div>
+
+    <div class="news-card accent-gold">
+      <div class="eyebrow">💰 Hypothekarzinsen Schweiz</div>
+      <h2>Nullzins bleibt — dein Finanzierungsfenster steht weit offen</h2>
+
+      <div class="stat-row">
+        <div class="stat-pill"><span class="val">0 %</span>SNB Leitzins</div>
+        <div class="stat-pill"><span class="val">~1.5 %</span>Ø Hypothekarzins</div>
+        <div class="stat-pill"><span class="val down">0.0 %</span>SARON aktuell</div>
+        <div class="stat-pill"><span class="val">1.25 %</span>Referenzzinssatz</div>
+      </div>
+
+      <p>Die Schweizerische Nationalbank (SNB) hat den Leitzins im Dezember 2025 bei <strong>0 % belassen</strong> — und laut Prognosen der Hypothekarbank Lenzburg dürfte das <strong>das gesamte Jahr 2026</strong> so bleiben. Für Investoren bedeutet das: Die Finanzierungskosten sind auf historisch tiefem Niveau, SARON-Hypotheken profitieren direkt.</p>
+
+      <div class="highlight">
+        <strong>Was das für dein Portfolio bedeutet:</strong> Wer jetzt eine Liegenschaft kauft oder refinanziert, sichert sich günstige Konditionen. Festhypotheken auf 5–10 Jahre sind aktuell bei rund 1.5–1.8 % zu haben — attraktiver als jede risikoarme Anleihe.
+      </div>
+
+      <p><span class="tag tag-gold">Insider-Einschätzung</span> SNB-Präsident Schlegel warnte jedoch: Der Immobilienmarkt sei <strong>«verwundbar»</strong>. Wer stark hebelt, sollte Szenarien mit einem Zinsanstieg ab 2027/28 modellieren — auch wenn dieser heute nicht im Basisszenario liegt.</p>
+
+      <div class="insider-tip">
+        <div class="tip-badge">💡 Profi-Tipp</div>
+        <p><strong>SARON vs. Festhypothek:</strong> Bei einem Anlagehorizont von über 7 Jahren macht eine <strong>Mischstrategie</strong> Sinn — 50 % SARON, 50 % Festzins. So profitierst du vom Nullzins, ohne das gesamte Zinsänderungsrisiko zu tragen. Besprich das mit deiner Hausbank oder einem unabhängigen Hypothekenvermittler (z. B. MoneyPark, Hypoplus).</p>
+      </div>
+    </div>
+
+    <!-- NEWS 2: MARKT & PREISE -->
+    <div class="section-label"><span>Thema 2 · Preisentwicklung & Rendite</span></div>
+
+    <div class="news-card accent-red">
+      <div class="eyebrow">🏗️ Marktentwicklung Regional</div>
+      <h2>Preise steigen — aber regional sehr verschieden</h2>
+
+      <div class="region-row">
+        <span class="region-badge active">Zürich & Zürichsee</span>
+        <span class="region-badge active">Genf & Genfersee</span>
+        <span class="region-badge active">Bern & Mittelland</span>
+        <span class="region-badge active">Basel & Nordwestschweiz</span>
+        <span class="region-badge active">Ganze Schweiz</span>
+      </div>
+
+      <p>Wohneigentum verteuerte sich im <strong>Q1 2026 schweizweit um +3.5 % YoY</strong> (UBS). Die Dynamik ist da — aber wer investiert, muss die Regionalunterschiede kennen:</p>
+
+      <div class="highlight-green" style="background:#e0ede5;border:1px solid #a8c9b6;border-radius:6px;padding:12px 16px;margin:12px 0;font-size:13.5px;line-height:1.65;color:#153d28;">
+        <strong>📈 Überdurchschnittlich (UBS):</strong> Graubünden (Tourismusboom), Berner Oberland, Luzern, Zentralschweiz — strukturelle Unterversorgung treibt Preise.
+      </div>
+
+      <div class="highlight-red" style="background:#fdeaea;border:1px solid #e8b0b0;border-radius:6px;padding:12px 16px;margin:12px 0;font-size:13.5px;line-height:1.65;color:#5a1a1a;">
+        <strong>📉 Unterdurchschnittlich:</strong> Genferseeregion, Jurabogen, Nordwestschweiz (Basel). Genf: kein erhöhtes Ungleichgewicht, aber Schere Bestands-/Neumiete bei +33 % — strukturelles Problem für Bestandshalter.
+      </div>
+
+      <p><span class="tag tag-red">Achtung</span> In der <strong>Stadt Zürich</strong> liegt der Leerstand bei unter 0.1 % — ein Wert, den die Stadt zuletzt 1989 gesehen hat. Für Vermieter ist das Potenzial hoch; für Käufer sinkt das Angebot auf ein historisches Minimum. An der Goldküste und in Kreisen 1, 6 und 8 kommen Objekte kaum noch auf den Markt.</p>
+
+      <p>Bei Renditeobjekten gilt: Die <strong>Bruttomietrendite</strong> in Zürich ist auf 3.0–3.5 % gesunken — immer noch attraktiver als eine 10-jährige Bundesobligation (ca. 0.8 %), aber der Puffer für Leerstand und Instandhaltung wird enger.</p>
+    </div>
+
+    <!-- NEWS 3: POLITIK & REGULIERUNG -->
+    <div class="section-label"><span>Thema 3 · Regulierung & Politik</span></div>
+
+    <div class="news-card accent-green">
+      <div class="eyebrow">🗳️ Abstimmung 14. Juni 2026</div>
+      <h2>Drei Initiativen, eine Deadline: Was Investoren jetzt wissen müssen</h2>
+
+      <p>Der <strong>14. Juni 2026</strong> wird für den Schweizer Immobilienmarkt richtungsweisend. Gleich vier Vorlagen haben direkte Auswirkungen auf Investoren und Bestandshalter:</p>
+
+      <div class="highlight">
+        <strong>🇨🇭 National — «Keine 10-Mio.-Schweiz» (SVP):</strong> Bevölkerungsdeckel bis 2050 auf 10 Millionen, notfalls via Kündigung der Personenfreizügigkeit. Eine Annahme würde mittelfristig die Nachfrage dämpfen und EU-Bilaterale III gefährden. Bundesrat empfiehlt Nein. Aktuell knappe Nein-Mehrheit in Umfragen.
+      </div>
+
+      <div class="highlight-green" style="background:#e0ede5;border:1px solid #a8c9b6;border-radius:6px;padding:12px 16px;margin:12px 0;font-size:13.5px;line-height:1.65;color:#153d28;">
+        <strong>📍 Kanton Zürich — Wohnschutz-Initiative:</strong> Mietpreisdeckel nach Sanierungen und Ersatzneubauten; Bewilligungspflicht für Umbauten. Kantonsrat lehnte 114:59 ab und empfiehlt den Gegenvorschlag. <strong>Blick nach Basel</strong>: Seit Einführung des Wohnschutzes 2022 sind die Baugesuche eingebrochen. Für Investoren mit Sanierungsplänen ein erhebliches Risiko.
+      </div>
+
+      <p><span class="tag tag-green">Auch abstimmungsreif</span> Die <strong>Wohnungsinitiative</strong> (staatliche Wohnbaugesellschaft, CHF 500 Mio.) und die <strong>Wohneigentums-Initiative</strong> (HEV, Förderung Eigenheim) runden das Paket ab.</p>
+
+      <div class="insider-tip" style="margin-top:14px;">
+        <div class="tip-badge">💡 Profi-Tipp</div>
+        <p>Plane keine grösseren Sanierungsprojekte im Kanton Zürich, <strong>bevor das Abstimmungsresultat am 14. Juni vorliegt</strong>. Eine Annahme der Wohnschutz-Initiative könnte die Rentabilität von Aufwertungsprojekten (Totalsanierungen, Ersatzneubauten) fundamental verändern — analog zu den Erfahrungen in Genf (seit 1978) und Basel (seit 2022).</p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 1-KLICK-UMFRAGE -->
+    <div class="survey-box" id="surveyBox">
+      <h3>Kurz gefragt — 1 Klick genügt 🎯</h3>
+      <p>Deine Antwort hilft uns, den nächsten Newsletter noch gezielter zu gestalten.</p>
+
+      <div class="survey-options" id="surveyOptions">
+        <button class="survey-btn" onclick="submitSurvey(this, 'Ja, aktiv auf Suche', 62)">
+          <span class="btn-icon">A</span>
+          Ja — ich bin aktiv auf der Suche nach einer Renditeliegenschaft
+        </button>
+        <button class="survey-btn" onclick="submitSurvey(this, 'Erst nach Abstimmung', 22)">
+          <span class="btn-icon">B</span>
+          Erst abwarten — ich schaue, was am 14. Juni rauskommt
+        </button>
+        <button class="survey-btn" onclick="submitSurvey(this, 'Halte Portfolio', 11)">
+          <span class="btn-icon">C</span>
+          Ich halte mein Portfolio und investiere aktuell nicht neu
+        </button>
+        <button class="survey-btn" onclick="submitSurvey(this, 'Nur beobachten', 5)">
+          <span class="btn-icon">D</span>
+          Ich beobachte den Markt nur — noch kein konkreter Plan
+        </button>
+      </div>
+
+      <div class="survey-result" id="surveyResult">
+        <span class="checkmark">✅</span>
+        <p id="surveyResultText">Danke für dein Feedback!</p>
+        <div class="bar-result" id="barResult"></div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-block">
+      <h3>Bereit für dein nächstes Investitionsobjekt?</h3>
+      <p>In einem kostenlosen 30-minütigen Erstgespräch analysieren wir gemeinsam deine Investitionsziele, aktuelle Finanzierungsmöglichkeiten und passende Liegenschaften in deiner Zielregion.</p>
+      <a href="#" class="cta-btn" onclick="return false;">
+        📅 Jetzt Besichtigungstermin buchen
+      </a>
+      <div class="cta-note">Kostenlos & unverbindlich · Videoberatung oder persönlich · Antwort innerhalb von 24 h</div>
+    </div>
+
+  </div><!-- /content -->
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>
+      Du erhältst diesen Newsletter, weil du dich auf <a href="#">immosignal.ch</a> registriert hast.<br>
+      <a href="#">Abmelden</a> &nbsp;·&nbsp; <a href="#">Newsletter-Einstellungen</a> &nbsp;·&nbsp; <a href="#">Datenschutz</a><br><br>
+      ImmoSignal GmbH · Bahnhofstrasse 10 · 8001 Zürich<br>
+      Dieser Newsletter dient ausschliesslich zu Informationszwecken und stellt keine Anlageberatung dar.
+    </p>
+  </div>
+
+</div><!-- /wrapper -->
+
+<script>
+  const mockData = {
+    'Ja, aktiv auf Suche': 0,
+    'Erst nach Abstimmung': 0,
+    'Halte Portfolio': 0,
+    'Nur beobachten': 0
+  };
+  const colors = ['#b8922a', '#4caf7d', '#6490c8', '#aaa'];
+  const labels = ['Ja, aktiv auf Suche', 'Erst nach Abstimmung', 'Halte Portfolio', 'Nur beobachten'];
+
+  function submitSurvey(btn, label, fakeBase) {
+    const opts = document.getElementById('surveyOptions');
+    const result = document.getElementById('surveyResult');
+    const resultText = document.getElementById('surveyResultText');
+    const barResult = document.getElementById('barResult');
+
+    // Build fake results with the chosen option bumped
+    const totals = { 'Ja, aktiv auf Suche': 62, 'Erst nach Abstimmung': 22, 'Halte Portfolio': 11, 'Nur beobachten': 5 };
+    totals[label] += 1;
+    const total = Object.values(totals).reduce((a,b) => a+b, 0);
+
+    opts.style.display = 'none';
+    result.style.display = 'block';
+    resultText.innerHTML = `Du hast gewählt: <strong>${label}</strong> — danke! So haben bisher andere Leserinnen und Leser geantwortet:`;
+
+    barResult.innerHTML = '';
+    labels.forEach((lbl, i) => {
+      const pct = Math.round((totals[lbl] / total) * 100);
+      const isMine = lbl === label;
+      barResult.innerHTML += `
+        <div class="bar-item">
+          <div class="bar-label-row">
+            <span style="color:${isMine?'#fff':'#ccc'};font-weight:${isMine?'600':'400'}">${isMine ? '▶ ' : ''}${lbl}</span>
+            <span style="color:${isMine?'#fff':'#aaa'}">${pct} %</span>
+          </div>
+          <div class="bar-track">
+            <div class="bar-fill${isMine?' mine':''}" id="bar${i}"></div>
+          </div>
+        </div>`;
+    });
+
+    // Animate bars after render
+    setTimeout(() => {
+      labels.forEach((lbl, i) => {
+        const pct = Math.round((totals[lbl] / total) * 100);
+        const el = document.getElementById('bar' + i);
+        if (el) el.style.width = pct + '%';
+      });
+    }, 80);
+  }
+</script>
+
+</body>
+</html>

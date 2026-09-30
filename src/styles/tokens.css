@@ -1,0 +1,46 @@
+/* ──────────────────────────────────────────────────────────
+   ImmoSignal — Design Tokens
+   Zentrale Quelle für Farben, Typografie, Spacing.
+   Änderungen hier wirken sich auf src/index.html aus.
+   Für die E-Mail-Build-Version (dist/) müssen Werte ggf.
+   hartcodiert/inlined werden, da viele E-Mail-Clients
+   CSS-Variablen nicht unterstützen (siehe docs).
+   ────────────────────────────────────────────────────────── */
+
+:root {
+  /* Farben */
+  --ink:       #141210;  /* Haupttext, Masthead-Hintergrund */
+  --paper:     #faf9f6;  /* Content-Hintergrund */
+  --cream:     #f2efe8;  /* Seiten-/Footer-Hintergrund */
+  --rule:      #d8d3c8;  /* Trennlinien, Rahmen */
+
+  --gold:      #b8922a;  /* Akzent: Zinsen-Thema */
+  --gold-lt:   #f5ead0;  /* Akzent-Hintergrund hell */
+
+  --green:     #1e5c3a;  /* Akzent: Regulierung-Thema, CTA */
+  --green-lt:  #e0ede5;
+
+  --red:       #b83333;  /* Akzent: Preise/Risiko-Thema */
+  --red-lt:    #fdeaea;
+
+  --muted:     #7a7367;  /* Sekundärtext */
+
+  /* Typografie */
+  --font-serif: 'DM Serif Display', Georgia, serif;
+  --font-sans:  'Inter', system-ui, sans-serif;
+
+  /* Spacing-Skala (für Konsistenz beim Weiterbauen) */
+  --space-xs:  4px;
+  --space-sm:  8px;
+  --space-md:  16px;
+  --space-lg:  24px;
+  --space-xl:  32px;
+  --space-2xl: 40px;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+
+  /* Max-Breite E-Mail-Body */
+  --content-max-width: 640px;
+}

@@ -1,0 +1,173 @@
+{
+  "issue": {
+    "id": "2026-06",
+    "title": "Juni 2026",
+    "audience": "Immobilieninvestoren",
+    "tone": "du-schweizer-charme",
+    "regions": ["zuerich", "genf", "bern", "basel", "schweiz"]
+  },
+
+  "subjectLines": [
+    {
+      "id": "a",
+      "emoji": "🏦",
+      "text": "Nullzins & volle Kasse: Jetzt in Schweizer Liegenschaften investieren?",
+      "recommended": false
+    },
+    {
+      "id": "b",
+      "emoji": "📈",
+      "text": "+3.5 % Wertzuwachs, 0 % Leitzins – was das für dein Portfolio bedeutet",
+      "recommended": true
+    },
+    {
+      "id": "c",
+      "emoji": "🗳️",
+      "text": "14. Juni entscheidet: Diese Abstimmung verändert den Schweizer Immobilienmarkt",
+      "recommended": false
+    }
+  ],
+
+  "greeting": {
+    "headlinePlain": "Hoi,",
+    "headlineEmphasis": "Marktlage, Rendite & Regulierung —",
+    "headlineSuffix": "was du jetzt wissen musst.",
+    "intro": "Der Schweizer Immobilienmarkt sendet gemischte Signale: <strong>Rekordtiefe Zinsen, steigende Preise, historisch leere Mietmärkte</strong> — und am 14. Juni 2026 stehen mehrere Abstimmungen an, die das Spielfeld für Investoren nachhaltig verändern könnten. Wir sortieren für dich die Fakten von Lärm, Kanton für Kanton, ohne Schönfärberei."
+  },
+
+  "newsItems": [
+    {
+      "id": "zinsen",
+      "accent": "gold",
+      "sectionLabel": "Thema 1 · Zinsen & Finanzierung",
+      "eyebrow": "💰 Hypothekarzinsen Schweiz",
+      "headline": "Nullzins bleibt — dein Finanzierungsfenster steht weit offen",
+      "stats": [
+        { "value": "0 %", "label": "SNB Leitzins", "direction": "neutral" },
+        { "value": "~1.5 %", "label": "Ø Hypothekarzins", "direction": "neutral" },
+        { "value": "0.0 %", "label": "SARON aktuell", "direction": "down" },
+        { "value": "1.25 %", "label": "Referenzzinssatz", "direction": "neutral" }
+      ],
+      "paragraphs": [
+        "Die Schweizerische Nationalbank (SNB) hat den Leitzins im Dezember 2025 bei <strong>0 % belassen</strong> — und laut Prognosen der Hypothekarbank Lenzburg dürfte das <strong>das gesamte Jahr 2026</strong> so bleiben. Für Investoren bedeutet das: Die Finanzierungskosten sind auf historisch tiefem Niveau, SARON-Hypotheken profitieren direkt."
+      ],
+      "highlight": {
+        "type": "gold",
+        "label": "Was das für dein Portfolio bedeutet:",
+        "text": "Wer jetzt eine Liegenschaft kauft oder refinanziert, sichert sich günstige Konditionen. Festhypotheken auf 5–10 Jahre sind aktuell bei rund 1.5–1.8 % zu haben — attraktiver als jede risikoarme Anleihe."
+      },
+      "tagNote": {
+        "tag": "Insider-Einschätzung",
+        "tagStyle": "gold",
+        "text": "SNB-Präsident Schlegel warnte jedoch: Der Immobilienmarkt sei <strong>«verwundbar»</strong>. Wer stark hebelt, sollte Szenarien mit einem Zinsanstieg ab 2027/28 modellieren — auch wenn dieser heute nicht im Basisszenario liegt."
+      },
+      "insiderTip": {
+        "badge": "💡 Profi-Tipp",
+        "title": "SARON vs. Festhypothek:",
+        "text": "Bei einem Anlagehorizont von über 7 Jahren macht eine <strong>Mischstrategie</strong> Sinn — 50 % SARON, 50 % Festzins. So profitierst du vom Nullzins, ohne das gesamte Zinsänderungsrisiko zu tragen. Besprich das mit deiner Hausbank oder einem unabhängigen Hypothekenvermittler (z. B. MoneyPark, Hypoplus)."
+      },
+      "sources": ["SNB", "Hypothekarbank Lenzburg"]
+    },
+    {
+      "id": "preise",
+      "accent": "red",
+      "sectionLabel": "Thema 2 · Preisentwicklung & Rendite",
+      "eyebrow": "🏗️ Marktentwicklung Regional",
+      "headline": "Preise steigen — aber regional sehr verschieden",
+      "regions": ["zuerich", "genf", "bern", "basel", "schweiz"],
+      "paragraphs": [
+        "Wohneigentum verteuerte sich im <strong>Q1 2026 schweizweit um +3.5 % YoY</strong> (UBS). Die Dynamik ist da — aber wer investiert, muss die Regionalunterschiede kennen:"
+      ],
+      "regionalBoxes": [
+        {
+          "type": "green",
+          "label": "📈 Überdurchschnittlich (UBS):",
+          "text": "Graubünden (Tourismusboom), Berner Oberland, Luzern, Zentralschweiz — strukturelle Unterversorgung treibt Preise."
+        },
+        {
+          "type": "red",
+          "label": "📉 Unterdurchschnittlich:",
+          "text": "Genferseeregion, Jurabogen, Nordwestschweiz (Basel). Genf: kein erhöhtes Ungleichgewicht, aber Schere Bestands-/Neumiete bei +33 % — strukturelles Problem für Bestandshalter."
+        }
+      ],
+      "tagNote": {
+        "tag": "Achtung",
+        "tagStyle": "red",
+        "text": "In der <strong>Stadt Zürich</strong> liegt der Leerstand bei unter 0.1 % — ein Wert, den die Stadt zuletzt 1989 gesehen hat. Für Vermieter ist das Potenzial hoch; für Käufer sinkt das Angebot auf ein historisches Minimum. An der Goldküste und in Kreisen 1, 6 und 8 kommen Objekte kaum noch auf den Markt."
+      },
+      "closingParagraph": "Bei Renditeobjekten gilt: Die <strong>Bruttomietrendite</strong> in Zürich ist auf 3.0–3.5 % gesunken — immer noch attraktiver als eine 10-jährige Bundesobligation (ca. 0.8 %), aber der Puffer für Leerstand und Instandhaltung wird enger.",
+      "sources": ["UBS Swiss Real Estate Bubble Index", "Stadt Zürich Statistikamt"]
+    },
+    {
+      "id": "politik",
+      "accent": "green",
+      "sectionLabel": "Thema 3 · Regulierung & Politik",
+      "eyebrow": "🗳️ Abstimmung 14. Juni 2026",
+      "headline": "Drei Initiativen, eine Deadline: Was Investoren jetzt wissen müssen",
+      "paragraphs": [
+        "Der <strong>14. Juni 2026</strong> wird für den Schweizer Immobilienmarkt richtungsweisend. Gleich vier Vorlagen haben direkte Auswirkungen auf Investoren und Bestandshalter:"
+      ],
+      "highlight": {
+        "type": "gold",
+        "label": "🇨🇭 National — «Keine 10-Mio.-Schweiz» (SVP):",
+        "text": "Bevölkerungsdeckel bis 2050 auf 10 Millionen, notfalls via Kündigung der Personenfreizügigkeit. Eine Annahme würde mittelfristig die Nachfrage dämpfen und EU-Bilaterale III gefährden. Bundesrat empfiehlt Nein. Aktuell knappe Nein-Mehrheit in Umfragen."
+      },
+      "regionalBoxes": [
+        {
+          "type": "green",
+          "label": "📍 Kanton Zürich — Wohnschutz-Initiative:",
+          "text": "Mietpreisdeckel nach Sanierungen und Ersatzneubauten; Bewilligungspflicht für Umbauten. Kantonsrat lehnte 114:59 ab und empfiehlt den Gegenvorschlag. Blick nach Basel: Seit Einführung des Wohnschutzes 2022 sind die Baugesuche eingebrochen. Für Investoren mit Sanierungsplänen ein erhebliches Risiko."
+        }
+      ],
+      "tagNote": {
+        "tag": "Auch abstimmungsreif",
+        "tagStyle": "green",
+        "text": "Die <strong>Wohnungsinitiative</strong> (staatliche Wohnbaugesellschaft, CHF 500 Mio.) und die <strong>Wohneigentums-Initiative</strong> (HEV, Förderung Eigenheim) runden das Paket ab."
+      },
+      "insiderTip": {
+        "badge": "💡 Profi-Tipp",
+        "text": "Plane keine grösseren Sanierungsprojekte im Kanton Zürich, <strong>bevor das Abstimmungsresultat am 14. Juni vorliegt</strong>. Eine Annahme der Wohnschutz-Initiative könnte die Rentabilität von Aufwertungsprojekten (Totalsanierungen, Ersatzneubauten) fundamental verändern — analog zu den Erfahrungen in Genf (seit 1978) und Basel (seit 2022)."
+      },
+      "sources": ["Kanton Zürich Staatskanzlei", "SVP Schweiz", "Bundesrat"]
+    }
+  ],
+
+  "survey": {
+    "title": "Kurz gefragt — 1 Klick genügt 🎯",
+    "subtitle": "Deine Antwort hilft uns, den nächsten Newsletter noch gezielter zu gestalten.",
+    "question": "Planst du in den nächsten 6 Monaten den Kauf einer Renditeliegenschaft in der Schweiz?",
+    "options": [
+      { "id": "A", "label": "Ja — ich bin aktiv auf der Suche nach einer Renditeliegenschaft", "shortLabel": "Ja, aktiv auf Suche", "baseCount": 62 },
+      { "id": "B", "label": "Erst abwarten — ich schaue, was am 14. Juni rauskommt", "shortLabel": "Erst nach Abstimmung", "baseCount": 22 },
+      { "id": "C", "label": "Ich halte mein Portfolio und investiere aktuell nicht neu", "shortLabel": "Halte Portfolio", "baseCount": 11 },
+      { "id": "D", "label": "Ich beobachte den Markt nur — noch kein konkreter Plan", "shortLabel": "Nur beobachten", "baseCount": 5 }
+    ]
+  },
+
+  "cta": {
+    "headline": "Bereit für dein nächstes Investitionsobjekt?",
+    "text": "In einem kostenlosen 30-minütigen Erstgespräch analysieren wir gemeinsam deine Investitionsziele, aktuelle Finanzierungsmöglichkeiten und passende Liegenschaften in deiner Zielregion.",
+    "buttonLabel": "📅 Jetzt Besichtigungstermin buchen",
+    "buttonUrl": "#",
+    "note": "Kostenlos & unverbindlich · Videoberatung oder persönlich · Antwort innerhalb von 24 h"
+  },
+
+  "footer": {
+    "unsubscribeText": "Du erhältst diesen Newsletter, weil du dich auf immosignal.ch registriert hast.",
+    "links": [
+      { "label": "Abmelden", "url": "#" },
+      { "label": "Newsletter-Einstellungen", "url": "#" },
+      { "label": "Datenschutz", "url": "#" }
+    ],
+    "company": "ImmoSignal GmbH · Bahnhofstrasse 10 · 8001 Zürich",
+    "disclaimer": "Dieser Newsletter dient ausschliesslich zu Informationszwecken und stellt keine Anlageberatung dar."
+  },
+
+  "regionLabels": {
+    "zuerich": "Zürich & Zürichsee",
+    "genf": "Genf & Genfersee",
+    "bern": "Bern & Mittelland",
+    "basel": "Basel & Nordwestschweiz",
+    "schweiz": "Ganze Schweiz"
+  }
+}
