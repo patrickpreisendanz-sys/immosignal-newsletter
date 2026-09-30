@@ -2,6 +2,12 @@
 
 ## Active
 
+> **Als Nächstes (Entscheid vom 30.09.2026):** Beta-Ende absichern und
+> Wartungserinnerungen scharf schalten. Beide hängen zusammen — es sind die
+> zwei Stellen, an denen die Anwendung etwas zusagt, das sie heute nicht
+> einlöst.
+
+
 - [ ] **Einzelunternehmen gründen und AHV anmelden** - vor dem ersten eingenommenen Franken
   - Sobald Geld fliesst, liegt selbständige Erwerbstätigkeit vor, unabhängig von der Anmeldung
   - Danach Impressum nachführen; Handelsregister und MWST erst ab 100'000 Franken Jahresumsatz
