@@ -32,15 +32,17 @@ ImmoSignal als Newsletter. Arbeitet allein, ohne Team.
 
 | Begriff | Bedeutung |
 |---------|-----------|
-| Liegenschaft | Ein Objekt im Bestand (Haus oder Wohnung) |
+| Immobilie | Ein Objekt im Bestand (Haus oder Wohnung). Seit 28.09.2026 der Begriff im Produkt |
+| Liegenschaft | Abgelöst durch „Immobilie". Lebt in Datenbank-Bezeichnern weiter (`max_liegenschaften`) |
 | Anlage | Bauteil mit Lebensdauer: Heizung, Dach, Fenster |
 | Nutzungsdauer | Wie lange eine Anlage hält, je Kategorie |
 | Ersatzkosten | Was der Ersatz einer Anlage kostet |
 | werterhaltend | Instandhaltung, steuerlich abzugsfähig |
 | wertvermehrend | Verbesserung, nicht abzugsfähig |
 | Massnahmenplan | 10-Jahres-Plan der fälligen Investitionen |
-| stillgelegt | Liegenschaft/Anlage nur lesbar, weil der Tarif zu klein ist |
+| stillgelegt | Immobilie/Anlage nur lesbar, weil der Tarif zu klein ist |
 | Tarif "keiner" | Kein Tarif gebucht — Konto lesbar, nicht beschreibbar |
+| Wohneigentum | Mittlere Tarifstufe, 9 CHF. Hiess bis 01.10.2026 „Essential"; der Enum-Wert in der Datenbank ist weiterhin `essential` |
 
 ## Tools
 

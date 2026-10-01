@@ -3,8 +3,9 @@
 | Dienst | Wofür | Bekannte Eigenheiten |
 |--------|-------|----------------------|
 | **Supabase** | Datenbank, Anmeldung, Dateien | Projekt `scjgyjlrnstmnxcrhcdv`, Region `eu-central-2` (Zürich) |
-| **Netlify** | Auslieferung beider Websites | Baut aus GitHub. Variablen der Oberfläche übersteuern `netlify.toml` |
-| **Hostpoint** | Domains, DNS, Mail | DNS-Editor sammelt Änderungen; erst "JETZT AUSFÜHREN" schaltet scharf |
+| **Hostpoint** | Domains, DNS, Mail **und Webhosting** | Seit 01.10.2026 laufen beide Websites hier, Server in der Schweiz. DNS-Editor sammelt Änderungen; erst "JETZT AUSFÜHREN" schaltet scharf |
+| **GitHub Actions** | Baut die App und lädt per rsync auf Hostpoint | Prüft Typen und Tests, bevor es ausliefert |
+| ~~Netlify~~ | abgelöst am 01.10.2026 | Kontingent aufgebraucht: 300 Credits für 20 Auslieferungen, je 15 |
 | **Resend** | Automatischer Mailversand | Absenderdomäne `send.feingrund.ch`, Region Irland |
 | **GitHub** | Versionierung | Konto `patrickpreisendanz-sys`, Zugang per SSH-Schlüssel |
 

@@ -11,7 +11,9 @@ Deutschland und Österreich. Live seit 27.09.2026.
 ## Technik
 
 React 19, Vite 8, TypeScript, Tailwind. Supabase für Datenbank, Anmeldung und
-Dateien (Rechenzentrum Zürich). Netlify liefert aus und baut bei jedem Push.
+Dateien (Rechenzentrum Zürich). Ausgeliefert wird seit dem 01.10.2026 über
+Hostpoint, gebaut von GitHub Actions — Server und Daten damit beide in der
+Schweiz.
 
 Mengengrenzen werden **in der Datenbank per Trigger** durchgesetzt, nicht im
 Frontend — die Anwendung läuft im Browser und der Schlüssel liegt offen.
