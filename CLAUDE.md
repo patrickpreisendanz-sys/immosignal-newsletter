@@ -10,7 +10,10 @@ ImmoSignal als Newsletter. Arbeitet allein, ohne Team.
 
 - **Sprache: immer Deutsch**, Schweizer Rechtschreibung (ss statt ß). Gilt auch
   für Code-Reviews, Befunde und Zusammenfassungen.
-- **Fachbegriffe schweizerisch:** Liegenschaft, Stockwerkeigentum, Massnahme.
+- **Fachbegriffe schweizerisch:** Immobilie, Stockwerkeigentum, Massnahme,
+  Anlage, Nutzungsdauer. Nicht „Liegenschaft" — seit 28.09.2026 abgelöst,
+  auch im Gespräch. Ausnahme: Bezeichner in der Datenbank, die weiterhin
+  `liegenschaft` heissen, und wörtliche Zitate von Testnutzern.
 - Möchte wissen, *warum* etwas so gebaut ist — Kommentare im Code erklären
   Gründe, nicht Mechanik.
 - Will bei Entscheidungen gefragt werden, statt vor vollendete Tatsachen
