@@ -25,15 +25,24 @@
     `public.edge_function_ausloesen()` und die Migration für Zeitpläne.
   - Spätestens Ende Februar 2027 scharf, besser früher
 
-- [ ] **Buchen während der Beta ermöglichen** - Konstruktionsfehler
+- [ ] **Tarif für nach der Beta vormerken lassen** - Absicht statt Buchung
   - `effektiver_tarif()` nimmt `greatest(gebuchter Tarif, Beta-Schenkung)`.
-    Während der Beta bekommt jeder Wohneigentum geschenkt — wer Starter bucht,
-    erhält dafür weniger, als er gratis schon hat.
-  - Folge: Es wird niemand buchen, solange die Beta läuft. Das Beta-Ende ist
-    damit faktisch der Umsatzstart, und es gibt keinen Weg, früher Geld
-    einzunehmen oder auch nur die Zahlungsstrecke mit echten Kunden zu testen.
-  - Lösungsrichtung: Eine Buchung während der Beta annehmen, aber erst ab
-    Beta-Ende abrechnen. Hängt mit der Zahlungsabwicklung zusammen.
+    Während der Beta hat jeder Wohneigentum geschenkt: Starter wäre weniger,
+    Wohneigentum dasselbe zum Preis von 9 Franken. Eine Buchung während der
+    Beta ergibt für niemanden Sinn.
+  - Deshalb kein Buchen, sondern ein **Vormerken**: Der Nutzer wählt in den
+    Einstellungen, welcher Tarif ab dem 01.04.2027 gelten soll. Keine Zahlung,
+    keine Abrechnung, nur eine Absichtserklärung.
+  - Bringt drei Dinge:
+    - Die Vorwarnung vor dem Beta-Ende wird konkret: "Du hast Wohneigentum
+      vorgemerkt, ab dem 1. April 9 Franken monatlich" statt einer allgemeinen
+      Ankündigung
+    - Du weisst vor dem Umsatzstart, womit zu rechnen ist
+    - Es braucht keine Zahlungsabwicklung — eine Spalte und eine Auswahl
+  - Vorarbeit vorhanden: Die Landingpage erfasst beim Eintragen auf die
+    Warteliste bereits einen Tarifwunsch in `beta_anmeldungen.interesse`.
+    Für bestehende Konten in der App fehlt das Gegenstück.
+  - Hängt mit der Vorwarnung zusammen, am besten zusammen bauen
 
 - [ ] **Auth-Mails auf Deutsch und eigenes Branding** - Supabase Dashboard > Authentication > Email Templates
   - Registrierung, Passwort-Reset und Magic Link kommen als englische Standardvorlage von noreply@mail.app.supabase.io
