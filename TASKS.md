@@ -16,31 +16,29 @@
   - Aktuell gibt es keinen Weg, Starter/Essential/Investor zu buchen — weder Knopf noch Anbieter
   - Blockiert zusammen mit dem Beta-Ende den regulären Betrieb ab 2027
 
-- [ ] **Beta-Ende 31.12.2026 absichern** - harte Kante, betrifft ausnahmslos alle Konten
-  - Danach fällt jedes Konto auf "keiner", also Lesezugriff. Früher war der Rückfall "starter" und weiter nutzbar
-  - Entweder Zahlung bis dahin fertig, oder `beta_essential_bis` in der Tabelle `abonnements` verlängern
-  - Die AGB versprechen eine Vorwarnung per E-Mail — dieser Versand existiert nicht
-  - **Prüfung 30.09.2026:** `effektiver_tarif()` nimmt `greatest(gebuchter Tarif,
-    Beta-Schenkung)`. Am 01.01.2027 ist die Schenkung `keiner`, und weil es keine
-    Zahlungsabwicklung gibt, hat niemand etwas gebucht — es trifft also jedes Konto
-    gleichzeitig, ohne Ausweichmöglichkeit für die Betroffenen.
-  - Es gibt keinen Code, der auf `beta_essential_bis` reagiert, bevor das Datum
-    erreicht ist. Die Grenze schlägt ohne Ankündigung zu.
+- [ ] **Vorwarnung vor dem Beta-Ende bauen** - Zusage aus den AGB
+  - Frist steht seit 01.10.2026 auf dem 31.03.2027, das Datum allein löst es nicht
+  - Die AGB versprechen: "Wir informieren dich rechtzeitig vor dem Ende der
+    kostenlosen Phase per E-Mail." Diesen Versand gibt es nicht.
+  - Zu bauen: Edge Function, die Konten findet, deren `beta_essential_bis` in
+    30 Tagen abläuft, plus Mailvorlage und Zeitplan. Das Gerüst steht jetzt —
+    `public.edge_function_ausloesen()` und die Migration für Zeitpläne.
+  - Spätestens Ende Februar 2027 scharf, besser früher
+
+- [ ] **Buchen während der Beta ermöglichen** - Konstruktionsfehler
+  - `effektiver_tarif()` nimmt `greatest(gebuchter Tarif, Beta-Schenkung)`.
+    Während der Beta bekommt jeder Wohneigentum geschenkt — wer Starter bucht,
+    erhält dafür weniger, als er gratis schon hat.
+  - Folge: Es wird niemand buchen, solange die Beta läuft. Das Beta-Ende ist
+    damit faktisch der Umsatzstart, und es gibt keinen Weg, früher Geld
+    einzunehmen oder auch nur die Zahlungsstrecke mit echten Kunden zu testen.
+  - Lösungsrichtung: Eine Buchung während der Beta annehmen, aber erst ab
+    Beta-Ende abrechnen. Hängt mit der Zahlungsabwicklung zusammen.
 
 - [ ] **Auth-Mails auf Deutsch und eigenes Branding** - Supabase Dashboard > Authentication > Email Templates
   - Registrierung, Passwort-Reset und Magic Link kommen als englische Standardvorlage von noreply@mail.app.supabase.io
   - Bei einem Passwort-Reset wirkt das auf Nutzer wie Phishing
   - Absender über Resend auf send.feingrund.ch umstellen; Gestaltung analog zur Wartungsmail
-
-- [ ] **Wartungserinnerungen scharf schalten** - Mailversand steht, Zeitplan fehlt
-  - Die Funktion `wartungserinnerung` ist ausgeliefert und aktiv, ruft aber niemand auf
-  - Cron-Job anlegen wie bei der Wartelisten-Übersicht; Achtung: verify_jwt steht dort noch auf an
-  - **Prüfung 30.09.2026:** Die Funktion antwortet mit 401, ist also ausgerollt und
-    korrekt per `x-cron-secret` abgesichert. Es fehlt ausschliesslich der Auslöser.
-  - Das ist keine Kleinigkeit: Die Website verkauft die Funktion wörtlich
-    ("Feingrund meldet sich per E-Mail, bevor etwas fällig wird") und der Tarif
-    Wohneigentum führt "Wartungsplanung inkl. Erinnerung" als Leistung auf.
-    Solange kein Zeitplan läuft, wird eine bezahlte Zusage nicht erfüllt.
 
 - [ ] **Bestätigungsmail für Zitate in den Rückmeldungen** - schriftliches Einverständnis einholen
   - Alex J. hat den Wortlaut am 28.09.2026 telefonisch bestätigt — schriftlich noch nicht
@@ -52,14 +50,6 @@
   - Gestern hat sich jemand eingetragen und keinerlei Rückmeldung erhalten
   - Bestätigt gleichzeitig, dass die Adresse stimmt und dem Eintrag zugestimmt wurde
   - Der Mailversand über send.feingrund.ch steht bereits
-
-- [ ] **Zeitpläne in die Versionierung holen** - aus dem Code nicht nachvollziehbar
-  - Keine Migration legt einen Cron-Job an. Ob in der Datenbank welche laufen,
-    lässt sich von aussen nicht prüfen — die Wartelisten-Übersicht wurde am
-    27.09.2026 über die Supabase-Oberfläche eingerichtet, nicht im Code.
-  - Folge: Bei einem Neuaufbau der Datenbank fehlen sie stillschweigend, und
-    niemand sieht dem Projekt an, was wann laufen sollte.
-  - Als Migration mit `cron.schedule()` nachziehen, sobald pg_cron aktiv ist
 
 - [ ] **Verwaiste Dateien im Speicher verhindern** - wächst unbemerkt
   - `useDocuments.ts` lädt erst die Datei hoch, legt dann die Zeile in `documents`
@@ -107,6 +97,26 @@
   - Code liegt unter `pages/Investor`, die Route fehlt absichtlich
 
 ## Done
+
+- [x] **Wartungserinnerungen scharf geschaltet** (01.10.2026) - Zeitplan taeglich
+  07:00 UTC. Der Aufruf scheiterte zunaechst an verify_jwt: Supabases Gateway
+  wies ihn mit UNAUTHORIZED_NO_AUTH_HEADER ab, bevor die Funktion startete.
+  Die Einstellung steht jetzt in config.toml statt nur im Dashboard.
+  Geprueft: 200, ein Empfaenger, zwei Wartungen gebuendelt, kein Fehlschlag.
+- [x] **Zeitplaene versioniert** (01.10.2026) - beide Jobs als Migration, das
+  Geheimnis ueber den Vault statt im Klartext in cron.job.command. Dabei zwei
+  Befunde behoben: Die Wartelisten-Uebersicht pruefte das Geheimnis nur, wenn
+  es gesetzt war — ohne Variable haette jeder Aufruf aus dem Netz die
+  Adressliste ausgeloest. Und der Timeout von 1000 ms sorgte dafuer, dass
+  Antworten nie erfasst wurden und ein Fehlschlag unsichtbar geblieben waere.
+- [x] **Beta-Frist auf 31.03.2027** (01.10.2026) - das Datum stand an sieben
+  Stellen: Standardwert der Spalte, beide bestehenden Konten, Rueckfallwert in
+  effektiver_tarif, AGB, Hero, Preis-Legende und Formular-Fussnote.
+- [x] **Auslieferung ueber GitHub Actions** (01.10.2026) - beide Ablagen bauen
+  und laden selbst hoch, mit Typpruefung und Tests als Schranke davor. Der
+  erste Auslieferungsschluessel war versehentlich in einem Screenshot sichtbar
+  und wurde ersetzt; der alte ist bei Hostpoint geloescht und gegengeprueft
+  abgewiesen.
 
 - [x] **info@feingrund.ch eingerichtet** (30.09.2026) - Postfach, Weiterleitung
   an Gmail und Versand ueber "Senden als" stehen und sind geprueft. Die Sperre
