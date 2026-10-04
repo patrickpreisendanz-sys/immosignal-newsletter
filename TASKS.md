@@ -142,10 +142,12 @@
     tot war. Und die Aufräumung hätte in derselben Nacht alle unbestätigten
     Eintragungen von vor dem 4. September gelöscht, auch die von echten
     Interessenten, die nie eine Bestätigungsmail bekommen konnten.
-  - **Offen:** `warteliste-nachfassen` ist gebaut und ausgeliefert, aber noch
-    nicht im Zeitplan. Die Migration dafür liegt als
-    `20261004184000_zeitplan_nachfassen.sql` bereit. Vorher den Altbestand
-    ohne Versandvermerk durchsehen und Testeinträge löschen.
+  - `warteliste-nachfassen` läuft stündlich zur Minute 20. Der Altbestand
+    wurde vorher durchgesehen: zwei echte Eintragungen ohne Versandvermerk,
+    keine Testadressen.
+  - Zum Nachschlagen, wo die Beta-Frist steht: Die Konstante `BETA_START` in
+    `_shared/warteliste-bestaetigung.ts` nennt in ihrem Kommentar die drei
+    weiteren Stellen.
 
 - [x] **Seite „Bis die Beta öffnet"** (04.10.2026) - feingrund.ch/vorbereiten
   mit den Nutzungsdauern als Balken und einer Checkliste der Unterlagen.
