@@ -44,19 +44,6 @@
     Für bestehende Konten in der App fehlt das Gegenstück.
   - Hängt mit der Vorwarnung zusammen, am besten zusammen bauen
 
-- [ ] **Haus und Wohnung unterscheiden** - zwei Ebenen statt einer
-  - Heute ist eine Immobilie eine flache Einheit. Künftig soll das Haus die
-    oberste Ebene sein und die Wohnung eine mögliche Ebene darunter.
-  - Der Zweck sind die Anlagen: Eine Heizung gehört dem Haus, ein Badumbau der
-    Wohnung. Ohne die zweite Ebene lässt sich das nicht sauber zuordnen, und bei
-    einem Mehrfamilienhaus landen alle Anlagen im selben Topf.
-  - Besonders für **Investor** relevant: Wer ein Haus mit mehreren vermieteten
-    Wohnungen hält, braucht die Kosten je Wohnung und zugleich die gemeinsamen
-    Anlagen des Hauses.
-  - Berührt Datenmodell, Tariflimiten (zählt eine Wohnung als eigene Immobilie?),
-    Massnahmenplan und Marktwert. **Am besten vor dem ersten echten Datenbestand** —
-    nachträglich bedeutet es, bestehende Immobilien und Anlagen umzuhängen.
-
 - [ ] **Auth-Mails auf Deutsch und eigenes Branding** - Supabase Dashboard > Authentication > Email Templates
   - Registrierung, Passwort-Reset und Magic Link kommen als englische Standardvorlage von noreply@mail.app.supabase.io
   - Bei einem Passwort-Reset wirkt das auf Nutzer wie Phishing
@@ -114,6 +101,18 @@
   - Code liegt unter `pages/Investor`, die Route fehlt absichtlich
 
 ## Done
+
+- [x] **Haus und Wohnung unterscheiden** (04.10.2026) - zwei Ebenen statt
+  einer, umgesetzt als Selbstbezug `eltern_id` in `properties`. Eine Wohnung
+  braucht ein Haus, ein Haus braucht keine Wohnung. Grenzen je Ebene:
+  Starter 1/1, Wohneigentum 1/2, Investor 3 Häuser mit je 6 Wohnungen.
+  - Dazu die Wertquote `anteil_promille` am Haus: Beim Stockwerkeigentum
+    gehört das Gebäude der Gemeinschaft, der Massnahmenplan rechnet die
+    Hausanlagen anteilig. Ohne sie stünde ein Heizungsersatz für 80'000
+    Franken voll in der Rücklage eines Eigentümers, den davon 6'800 treffen.
+  - Noch nicht am Umbau beteiligt: Der Marktwert bleibt je Objekt und wird
+    nicht über Haus und Wohnungen zusammengezogen. Für eine Hausansicht, die
+    ihre Wohnungen aufsummiert, fehlt bisher die Oberfläche.
 
 - [x] **Kurzbeschreibung je Tarif** (04.10.2026) - die Karten listeten Mengen,
   sagten aber nicht, wen die Stufe meint. Jetzt steht zwischen Preis und
