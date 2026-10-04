@@ -110,6 +110,12 @@
     gehört das Gebäude der Gemeinschaft, der Massnahmenplan rechnet die
     Hausanlagen anteilig. Ohne sie stünde ein Heizungsersatz für 80'000
     Franken voll in der Rücklage eines Eigentümers, den davon 6'800 treffen.
+  - Nach dem ersten Test umgebaut: Die Wohnung stand als gleichrangiger Typ
+    in der Auswahl, verlangte aber ein Haus, das es noch nicht gab. Jetzt in
+    der Reihenfolge der Wirklichkeit — erst das Gebäude, dann die Frage nach
+    den Wohnungen. Dazu eine Objektzeile über den Reitern, das Anlagenregister
+    des Hauses zeigt die Wohnungen mit, und die Massnahmenplanung des Hauses
+    rechnet sie ein (Hausanlagen anteilig, Wohnungsanlagen voll).
   - Noch nicht am Umbau beteiligt: Der Marktwert bleibt je Objekt und wird
     nicht über Haus und Wohnungen zusammengezogen. Für eine Hausansicht, die
     ihre Wohnungen aufsummiert, fehlt bisher die Oberfläche.
