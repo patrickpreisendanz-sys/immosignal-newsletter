@@ -44,19 +44,6 @@
     Für bestehende Konten in der App fehlt das Gegenstück.
   - Hängt mit der Vorwarnung zusammen, am besten zusammen bauen
 
-- [ ] **Kurzbeschreibung je Tarif** - wofür die Stufe gedacht ist, nicht nur was sie kann
-  - Die Tarifkarten listen heute Merkmale (Anzahl Immobilien, Anlagen, Dokumente),
-    sagen aber nicht, für welche Lebenslage die Stufe gemacht ist. Wer selbst in
-    seinem Haus wohnt, muss aus der Merkmalsliste erraten, dass "Wohneigentum"
-    ihn meint.
-  - Gewollte Aussage je Stufe:
-    - **Starter** - zum Einsteigen und sich einen Überblick verschaffen
-    - **Wohneigentum** - selbstgenutzte Immobilien, Wohnung und/oder Haus
-    - **Investor** - vermietete Häuser und/oder Wohnungen
-  - An zwei Stellen nötig: Tarifkarten auf der Landingpage und die Tarifauswahl
-    in der App. Hängt mit dem Vormerken nach der Beta zusammen — dort muss der
-    Nutzer ja wissen, was er wählt.
-
 - [ ] **Haus und Wohnung unterscheiden** - zwei Ebenen statt einer
   - Heute ist eine Immobilie eine flache Einheit. Künftig soll das Haus die
     oberste Ebene sein und die Wohnung eine mögliche Ebene darunter.
@@ -127,6 +114,16 @@
   - Code liegt unter `pages/Investor`, die Route fehlt absichtlich
 
 ## Done
+
+- [x] **Kurzbeschreibung je Tarif** (04.10.2026) - die Karten listeten Mengen,
+  sagten aber nicht, wen die Stufe meint. Jetzt steht zwischen Preis und
+  Merkmalsliste ein Satz je Stufe, auf der Landingpage und in der Tarifkarte
+  der Einstellungen. Die Sätze liegen in `tarifZweck` in `src/lib/tarif.ts`,
+  damit sie bei der kommenden Tarifauswahl schon bereitstehen; die
+  Landingpage führt sie nochmals, weil sie eine getrennte Ablage ist.
+  - Beim Ausrichten der Karten kam ein älterer Versatz heraus: Bei
+    Wohneigentum bricht „pro Monat · in der Beta kostenlos" im Vierspalter um
+    und verschob die Karte um 24 px. Mit behoben.
 
 - [x] **Double Opt-in für die Warteliste** (04.10.2026) - wer sich eintrug,
   bekam bisher nichts zurück. Jetzt: Bestätigungsmail mit Einmallink,
