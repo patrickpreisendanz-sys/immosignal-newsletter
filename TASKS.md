@@ -44,6 +44,32 @@
     Für bestehende Konten in der App fehlt das Gegenstück.
   - Hängt mit der Vorwarnung zusammen, am besten zusammen bauen
 
+- [ ] **Kurzbeschreibung je Tarif** - wofür die Stufe gedacht ist, nicht nur was sie kann
+  - Die Tarifkarten listen heute Merkmale (Anzahl Immobilien, Anlagen, Dokumente),
+    sagen aber nicht, für welche Lebenslage die Stufe gemacht ist. Wer selbst in
+    seinem Haus wohnt, muss aus der Merkmalsliste erraten, dass "Wohneigentum"
+    ihn meint.
+  - Gewollte Aussage je Stufe:
+    - **Starter** - zum Einsteigen und sich einen Überblick verschaffen
+    - **Wohneigentum** - selbstgenutzte Immobilien, Wohnung und/oder Haus
+    - **Investor** - vermietete Häuser und/oder Wohnungen
+  - An zwei Stellen nötig: Tarifkarten auf der Landingpage und die Tarifauswahl
+    in der App. Hängt mit dem Vormerken nach der Beta zusammen — dort muss der
+    Nutzer ja wissen, was er wählt.
+
+- [ ] **Haus und Wohnung unterscheiden** - zwei Ebenen statt einer
+  - Heute ist eine Immobilie eine flache Einheit. Künftig soll das Haus die
+    oberste Ebene sein und die Wohnung eine mögliche Ebene darunter.
+  - Der Zweck sind die Anlagen: Eine Heizung gehört dem Haus, ein Badumbau der
+    Wohnung. Ohne die zweite Ebene lässt sich das nicht sauber zuordnen, und bei
+    einem Mehrfamilienhaus landen alle Anlagen im selben Topf.
+  - Besonders für **Investor** relevant: Wer ein Haus mit mehreren vermieteten
+    Wohnungen hält, braucht die Kosten je Wohnung und zugleich die gemeinsamen
+    Anlagen des Hauses.
+  - Berührt Datenmodell, Tariflimiten (zählt eine Wohnung als eigene Immobilie?),
+    Massnahmenplan und Marktwert. **Am besten vor dem ersten echten Datenbestand** —
+    nachträglich bedeutet es, bestehende Immobilien und Anlagen umzuhängen.
+
 - [ ] **Auth-Mails auf Deutsch und eigenes Branding** - Supabase Dashboard > Authentication > Email Templates
   - Registrierung, Passwort-Reset und Magic Link kommen als englische Standardvorlage von noreply@mail.app.supabase.io
   - Bei einem Passwort-Reset wirkt das auf Nutzer wie Phishing
@@ -54,11 +80,6 @@
   - Kurze Mail mit dem veröffentlichten Wortlaut, seine Antwort aufbewahren
   - Gleiches gilt für die übrigen Stimmen auf der Landingpage
   - Kurze Mail mit dem genauen Zitat, Antwort aufbewahren
-
-- [ ] **Bestätigungsmail für die Warteliste (Double Opt-in)** - wer sich einträgt, bekommt aktuell nichts
-  - Gestern hat sich jemand eingetragen und keinerlei Rückmeldung erhalten
-  - Bestätigt gleichzeitig, dass die Adresse stimmt und dem Eintrag zugestimmt wurde
-  - Der Mailversand über send.feingrund.ch steht bereits
 
 - [ ] **Verwaiste Dateien im Speicher verhindern** - wächst unbemerkt
   - `useDocuments.ts` lädt erst die Datei hoch, legt dann die Zeile in `documents`
@@ -106,6 +127,37 @@
   - Code liegt unter `pages/Investor`, die Route fehlt absichtlich
 
 ## Done
+
+- [x] **Double Opt-in für die Warteliste** (04.10.2026) - wer sich eintrug,
+  bekam bisher nichts zurück. Jetzt: Bestätigungsmail mit Einmallink,
+  Bestätigungsseite auf feingrund.ch, und die Eintragung läuft über
+  `warteliste-eintragen` statt direkt über die REST-Schnittstelle. Dadurch
+  fiel die INSERT-Regel für `anon` weg — bisher konnte jeder mit dem
+  Schlüssel aus dem Seitenquelltext beliebig viele Zeilen anlegen. Geprüft:
+  direkter Schreibzugriff wird mit 42501 abgewiesen, Drosselung greift ab der
+  sechsten Anfrage, Honigtopf und Mail-Deckel ebenso.
+  - Zwei eigene Fehler, beide beim ersten Durchlauf aufgefallen: Das Alter des
+    Links wurde an der Eintragung gemessen statt am Versand der Mail — eine
+    Adresse, die seit August auf der Liste stand, bekam einen Link, der schon
+    tot war. Und die Aufräumung hätte in derselben Nacht alle unbestätigten
+    Eintragungen von vor dem 4. September gelöscht, auch die von echten
+    Interessenten, die nie eine Bestätigungsmail bekommen konnten.
+  - **Offen:** `warteliste-nachfassen` ist gebaut und ausgeliefert, aber noch
+    nicht im Zeitplan. Die Migration dafür liegt als
+    `20261004184000_zeitplan_nachfassen.sql` bereit. Vorher den Altbestand
+    ohne Versandvermerk durchsehen und Testeinträge löschen.
+
+- [x] **Seite „Bis die Beta öffnet"** (04.10.2026) - feingrund.ch/vorbereiten
+  mit den Nutzungsdauern als Balken und einer Checkliste der Unterlagen.
+  Bewusst eine eigene Seite statt ein Anbau an die Bestätigungsseite: Die
+  steht auf noindex, ist nur mit Token erreichbar und wird einmal gesehen.
+  Verlinkt aus Bestätigungsseite, Bestätigungsmail und Landingpage.
+
+- [x] **Beta-Start im Dezember 2026 benannt** (04.10.2026) - stand vorher
+  nirgends. Die Konstante `BETA_START` nennt in ihrem Kommentar alle drei
+  weiteren Stellen mit derselben Aussage, damit eine Verschiebung keine
+  Suchaktion wird: Fussnote der Landingpage, Bestätigungsseite,
+  Vorbereitungsseite.
 
 - [x] **Wartungserinnerungen scharf geschaltet** (01.10.2026) - Zeitplan taeglich
   07:00 UTC. Der Aufruf scheiterte zunaechst an verify_jwt: Supabases Gateway
