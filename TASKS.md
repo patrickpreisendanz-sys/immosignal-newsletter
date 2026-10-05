@@ -8,9 +8,32 @@
 > einlöst.
 
 
-- [ ] **Einzelunternehmen gründen und AHV anmelden** - vor dem ersten eingenommenen Franken
-  - Sobald Geld fliesst, liegt selbständige Erwerbstätigkeit vor, unabhängig von der Anmeldung
-  - Danach Impressum nachführen; Handelsregister und MWST erst ab 100'000 Franken Jahresumsatz
+- [ ] **Bei der AHV anmelden** - mit der ersten Rechnung, nicht davor
+  - Ein Einzelunternehmen wird nicht gegründet. Es entsteht, sobald jemand
+    selbständig auf eigenes Risiko und mit Gewinnabsicht tätig wird — kein
+    Notar, kein Kapital, kein Eintrag. Es gibt also keinen Stichtag, bis zu
+    dem etwas „gegründet" sein müsste.
+  - **Die Reihenfolge ist: erste Rechnung, dann anmelden.** Die
+    Ausgleichskasse erkennt Selbständigkeit nicht auf Zuruf an, sondern
+    verlangt Belege: Rechnungen, mehrere Auftraggeber, eigenes Risiko, eigene
+    Infrastruktur. Wer sich ohne das anmeldet, bekommt den Status nicht.
+    Eingestuft wird danach rückwirkend auf den Beginn der Tätigkeit.
+  - Hier stand vorher „vor dem ersten eingenommenen Franken". Das war falsch
+    und praktisch unmöglich — die Kasse will die Rechnung ja sehen.
+  - Drei getrennte Pflichten, die regelmässig durcheinandergeraten:
+    - **AHV:** keine Umsatzgrenze, greift mit dem ersten Einkommen
+    - **Handelsregister:** ab 100'000 Franken Jahresumsatz
+    - **Mehrwertsteuer:** ab 100'000 Franken Jahresumsatz
+    - **Einkommenssteuer:** ab dem ersten Franken in die Steuererklärung,
+      ohne Freibetrag — unabhängig von allen dreien
+  - Solange die Beta kostenlos läuft, fliesst kein Geld und ist nichts
+    anzumelden. Bei 9 Franken im Monat wären 100'000 Franken rund 925
+    zahlende Konten.
+  - **Verbindlich klären bei der SVA Aargau.** Offen ist unter anderem, ob
+    die AHV-Sonderregeln für geringfügigen Nebenerwerb hier greifen. Ein
+    Anruf beantwortet, ab wann sie die Anmeldung erwartet und welche Belege
+    sie dafür braucht.
+  - Danach Impressum nachführen
 
 - [ ] **Zahlungsabwicklung wählen und anbinden** - Voraussetzung dafür, dass überhaupt jemand einen Tarif buchen kann
   - Aktuell gibt es keinen Weg, Starter/Essential/Investor zu buchen — weder Knopf noch Anbieter
