@@ -16,15 +16,6 @@
   - Aktuell gibt es keinen Weg, Starter/Essential/Investor zu buchen — weder Knopf noch Anbieter
   - Blockiert zusammen mit dem Beta-Ende den regulären Betrieb ab 2027
 
-- [ ] **Vorwarnung vor dem Beta-Ende bauen** - Zusage aus den AGB
-  - Frist steht seit 01.10.2026 auf dem 31.03.2027, das Datum allein löst es nicht
-  - Die AGB versprechen: "Wir informieren dich rechtzeitig vor dem Ende der
-    kostenlosen Phase per E-Mail." Diesen Versand gibt es nicht.
-  - Zu bauen: Edge Function, die Konten findet, deren `beta_essential_bis` in
-    30 Tagen abläuft, plus Mailvorlage und Zeitplan. Das Gerüst steht jetzt —
-    `public.edge_function_ausloesen()` und die Migration für Zeitpläne.
-  - Spätestens Ende Februar 2027 scharf, besser früher
-
 - [ ] **Tarif für nach der Beta vormerken lassen** - Absicht statt Buchung
   - `effektiver_tarif()` nimmt `greatest(gebuchter Tarif, Beta-Schenkung)`.
     Während der Beta hat jeder Wohneigentum geschenkt: Starter wäre weniger,
@@ -55,20 +46,6 @@
   - Gleiches gilt für die übrigen Stimmen auf der Landingpage
   - Kurze Mail mit dem genauen Zitat, Antwort aufbewahren
 
-- [ ] **Verwaiste Dateien im Speicher verhindern** - wächst unbemerkt
-  - `useDocuments.ts` lädt erst die Datei hoch, legt dann die Zeile in `documents`
-    an. Scheitert der zweite Schritt, wird die Datei sauber entfernt — bricht aber
-    der Browser dazwischen ab (Tab zu, Verbindung weg), bleibt sie liegen.
-  - Solche Dateien sind für den Nutzer unsichtbar und zählen nicht gegen die
-    Quote, weil die aus `documents` gerechnet wird. Sie verbrauchen Speicher,
-    den du bezahlst.
-  - Zweiter, verwandter Punkt: Die Speicherregel prüft nur das Pfadpräfix
-    (`{user_id}/…`). Wer die Storage-API direkt anspricht, kann beliebig viel in
-    den eigenen Ordner laden, ohne je eine `documents`-Zeile anzulegen. Setzt
-    Absicht voraus, ist aber derselbe blinde Fleck.
-  - Lösungsrichtung: eine wiederkehrende Aufräumung, die Objekte ohne passende
-    `documents`-Zeile nach einer Schonfrist entfernt
-
 ## Waiting On
 
 - [ ] **Rechtstexte fachlich gegenlesen lassen** - Anwalt oder Rechtsberatung
@@ -77,14 +54,15 @@
   - Spätestens vor dem ersten zahlenden Kunden
 
 ## Someday
-- [ ] **Veralteten Kommentar zur Speichergrenze berichtigen** -
-  `20260812120000_tarife.sql:38` sagt, die Speichersumme sei "rein informativ"
-  und werde nicht durchgesetzt. Seit `20260812150000` prüft der Trigger sie
-  sehr wohl. Wer den Kommentar liest, zieht den falschen Schluss.
+- [ ] **Zwei Zeitpläne scharf stellen** - `beta-vorwarnung` und
+  `speicher-aufraeumen` sind gebaut und ausgeliefert, laufen aber nicht von
+  selbst. Beide verschicken Mails beziehungsweise löschen Dateien; die
+  Anweisungen stehen im README der jeweiligen Funktion. Beim Aufräumlauf
+  vorher einen Probelauf ansehen.
 
-- [ ] **DSGVO und DSG nebeneinander nennen** - die App schreibt "DSGVO-konform".
-  Für ein Schweizer Angebot ist das revidierte DSG die nähere Referenz, für
-  Kundschaft in DE/AT die DSGVO. Beides zu nennen wäre genauer als eines davon.
+- [ ] **Vorlage der Wartelisten-Übersicht auslagern** - sie steht in
+  derselben Datei wie `Deno.serve`, ein Import würde also einen Server
+  starten. Dadurch ist sie als einzige Mailvorlage ungetestet.
 
 - [ ] **Massnahmenplan mit echten Daten durchklicken** - bisher nur mit Testdaten geprüft
 
@@ -92,6 +70,40 @@
   - Code liegt unter `pages/Investor`, die Route fehlt absichtlich
 
 ## Done
+
+- [x] **Vorwarnung vor dem Beta-Ende** (05.10.2026) - zwei Stufen, 30 und 7
+  Tage vorher. Merkliste je Konto **und** Stufe, sonst hätte die zweite
+  Warnung die erste unterdrückt. Gewarnt wird nur, wer beim Beta-Ende etwas
+  verliert. **Zeitplan nicht eingerichtet** — Anweisung im README der
+  Funktion.
+
+- [x] **Verwaiste Dateien aufräumen** (05.10.2026) - Suche in der Datenbank
+  über `storage.objects` gegen `documents` und `properties`, Schonfrist 24
+  Stunden. **Probelauf ist die Voreinstellung**; ohne `{"loeschen": true}`
+  wird nur berichtet. **Zeitplan nicht eingerichtet.**
+
+- [x] **Stilllegen über zwei Ebenen geprüft** (05.10.2026) - vier Befunde:
+  Löschdialog verschwieg die Wohnungen, die Fehlermeldung versprach eine
+  Auswahl die es nicht gab, gesperrte Wohnungen sahen aktiv aus, und die
+  Zwölfmonatssperre liess nur eine Aktivierung je Tarifwechsel zu. Alle
+  behoben.
+
+- [x] **Mailvorlagen geprüft** (05.10.2026) - 48 Tests für Wartungs-,
+  Bestätigungs- und Vorwarnungsmail. Offen: `wartelisten-uebersicht`, deren
+  Vorlage in derselben Datei steht wie `Deno.serve`.
+
+- [x] **Oberflächentests eingeführt** (05.10.2026) - jsdom und Testing
+  Library. Geprüft ist zuerst die Fokusführung im Dialog und die
+  Tastaturbedienung der Tabellen — beides hatte ich ohne Ansicht gebaut.
+
+- [x] **DSG neben der DSGVO** (05.10.2026) - in App und Website. Am
+  Rechtstext war nichts zu tun: Abschnitt 11 der Datenschutzerklärung nannte
+  beide Rechtsordnungen schon.
+
+- [x] **Veralteter Kommentar zur Speichergrenze** (05.10.2026) - erledigt
+  ohne Änderung. Die Spalte wurde am 12.08. zu `max_speicher_mb` umbenannt und
+  bekam dabei einen neuen, zutreffenden Kommentar. Der stehengebliebene Text
+  steht nur in der älteren Migration und beschreibt den damaligen Stand.
 
 - [x] **Ein Monatsname für alle drei Länder** (05.10.2026) - „Januar" auch für
   österreichische Konten, als Regel mit Begründung statt als Zufall. Die
