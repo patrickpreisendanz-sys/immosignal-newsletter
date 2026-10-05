@@ -77,25 +77,6 @@
   - Spätestens vor dem ersten zahlenden Kunden
 
 ## Someday
-- [ ] **„Jänner" für österreichische Konten** - die Wartungserinnerung
-  formatiert Datumsangaben fest mit `de-CH`. Der einzige Unterschied im
-  DACH-Raum ist der Monatsname im Januar: Österreich schreibt „Jänner".
-  Kurzdaten sind in allen drei Ländern identisch.
-  - Zu tun wäre: `faellige_erinnerungen()` um das Land der Immobilie
-    erweitern (drop und create, wie am 11.08. schon einmal) und es durch
-    `index.ts` an `vorlage.ts` reichen.
-  - Nicht allein umgesetzt, weil dafür eine Datenbankfunktion und ein
-    laufender Mailversand angefasst werden müssten — für einen Fall, den es
-    bei zwei Schweizer Konten heute nicht gibt.
-
-- [ ] **Schweizer Rechtsbegriffe in einem DACH-Produkt** - die Oberfläche
-  spricht von „Stockwerkeigentum" und „Wertquote". Beides gibt es so nur in
-  der Schweiz: Deutschland sagt „Wohnungseigentum" und „Miteigentumsanteil",
-  Österreich „Wohnungseigentum" und „Nutzwert".
-  - Betrifft vor allem das Feld für den Gebäudeanteil und seine Erläuterung.
-  - Entscheidung, keine Korrektur: Es hängt daran, wie stark du DE und AT
-    ansprechen willst.
-
 - [ ] **Veralteten Kommentar zur Speichergrenze berichtigen** -
   `20260812120000_tarife.sql:38` sagt, die Speichersumme sei "rein informativ"
   und werde nicht durchgesetzt. Seit `20260812150000` prüft der Trigger sie
@@ -111,6 +92,16 @@
   - Code liegt unter `pages/Investor`, die Route fehlt absichtlich
 
 ## Done
+
+- [x] **Ein Monatsname für alle drei Länder** (05.10.2026) - „Januar" auch für
+  österreichische Konten, als Regel mit Begründung statt als Zufall. Die
+  Entscheidung ging gegen die landesübliche Form: Ein Konto kann Objekte in
+  mehreren Ländern führen, und zwei Namen für denselben Monat verwirren mehr,
+  als „Jänner" nützt.
+
+- [x] **Rechtsbegriffe für DACH zusammengezogen** (05.10.2026) - Stockwerk-
+  oder Wohnungseigentum, Wertquote beziehungsweise Miteigentumsanteil,
+  Erneuerungsfonds mit Instandhaltungsrücklage daneben. In App und Website.
 
 - [x] **bildVerkleinern geprüft** (05.10.2026) - 15 Tests ohne neue
   Abhängigkeit. jsdom samt nativer Canvas-Implementierung hätte am Ende die
