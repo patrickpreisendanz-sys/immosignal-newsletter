@@ -53,6 +53,41 @@
   - Kritische Stellen: Haftung, Gerichtsstand, Widerrufsrecht
   - Spätestens vor dem ersten zahlenden Kunden
 
+  **Ausdrücklich mitprüfen lassen (Stand 05.10.2026):**
+
+  - [ ] **Entscheid gegen ein Einwilligungsbanner.** Vier Dinge liegen auf dem
+    Gerät des Nutzers: das Sitzungsmerkmal der Anmeldung, der Zwischenspeicher
+    der installierbaren App, ein Merker für den weggeklickten
+    Installationshinweis und die abgehakten Punkte der Unterlagen-Checkliste
+    auf `/vorbereiten`.
+    - Begründung für die Einwilligungsfreiheit: § 25 Abs. 2 Nr. 2 TDDDG,
+      Art. 5 Abs. 3 ePrivacy-Richtlinie, Art. 45c FMG — gespeichert wird
+      allein, was der Nutzer selbst angeklickt hat, lokal, ohne Kennung, ohne
+      Übertragung.
+    - Die offene Frage: Beim Sitzungsmerkmal ist die Ausnahme unstrittig. Bei
+      den **dauerhaften** Einträgen (Installationshinweis, Checkliste) stützt
+      sie sich auf die Fallgruppen „Nutzereingabe" und
+      „Oberflächenanpassung" — die Arbeitsgruppe 29 nennt dort Sitzungsdauer
+      oder eine begrenzte Dauer. Unsere laufen unbegrenzt.
+    - Mögliche Entschärfung, falls der Anwalt es enger sieht: ein Verfallsdatum
+      auf diesen beiden Einträgen statt eines Banners.
+    - Das Argument gegen einen Banner bleibt: Fragt man nach Einwilligung für
+      etwas Einwilligungsfreies und jemand lehnt ab, muss man es befolgen —
+      sonst entsteht ein Verstoss, wo vorher keiner war.
+
+  - [ ] **Abschnitt 4 der Datenschutzerklärung** - zählt die vier Einträge seit
+    dem 05.10.2026 vollständig auf. Vorher fehlten drei davon.
+
+  - [ ] **AGB 2.1 und die Zusage zur Vorwarnung** - am 05.10.2026 angepasst:
+    Mengengrenzen nennen jetzt Häuser und Wohnungen je Haus statt einer Zahl
+    an Immobilien, und die Vorwarnung vor dem Beta-Ende nennt den Rhythmus
+    („in der Regel 30 Tage und nochmals 7 Tage vorher"). Beides beschreibend
+    gemeint, aber die Fristangabe bindet.
+
+  - [ ] **„DSG und DSGVO" als Vertrauensaussage** - steht seit dem 05.10.2026
+    auf Landingpage und Anmeldefenster. Gedeckt durch Abschnitt 11 der
+    Datenschutzerklärung; ob die Kurzform so stehen darf, ist die Frage.
+
 ## Someday
 - [ ] **Zwei Zeitpläne scharf stellen** - `beta-vorwarnung` und
   `speicher-aufraeumen` sind gebaut und ausgeliefert, laufen aber nicht von
