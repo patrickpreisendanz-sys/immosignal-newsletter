@@ -69,15 +69,6 @@
   - Lösungsrichtung: eine wiederkehrende Aufräumung, die Objekte ohne passende
     `documents`-Zeile nach einer Schonfrist entfernt
 
-- [ ] **Tarif-Logik testen** - `src/lib/tarif.ts` ist ungetestet
-  - Von 11'215 Zeilen Anwendungscode ist genau ein Modul durch Tests gedeckt:
-    `calculations.ts` (353 Zeilen Code, 393 Zeilen Test — gut gemacht).
-  - Ungetestet sind unter anderem `tarif.ts`, `format.ts`, `labels.ts`,
-    `bewertung.ts` und `standardanlagen.ts`.
-  - `tarif.ts` zuerst: Es entscheidet, was ein Konto darf, und wird nach der
-    Umbenennung auf Wohneigentum und der Einführung von "keiner" von mehreren
-    Stellen gelesen. Ein Fehler dort ist teuer und fällt spät auf.
-
 ## Waiting On
 
 - [ ] **Rechtstexte fachlich gegenlesen lassen** - Anwalt oder Rechtsberatung
@@ -101,6 +92,19 @@
   - Code liegt unter `pages/Investor`, die Route fehlt absichtlich
 
 ## Done
+
+- [x] **Ungetestete Module abgedeckt** (05.10.2026) - von 68 auf 136 Tests,
+  sieben neue Dateien: `format`, `bewertung`, `labels`, `standardanlagen`,
+  `mappers`, `karte`, `rechtslinks`. Damit ist auch der Punkt aus dem
+  Code-Review vom 30.09. erledigt, dass `tarif.ts` ungetestet war.
+  - Geprüft wurde nicht Zeilenabdeckung, sondern was teuer bräche: dass
+    „unbekannt" nicht als Beurteilung zählt, dass der Formatierer-Speicher
+    die Länder nicht vermischt, dass jede Kategorie ihre Nutzungsdauer hat,
+    und dass `toBundle` die übergebene Liste nicht umsortiert.
+  - **Offen:** `bildVerkleinern` ist weiterhin ungetestet. Es entfernt die
+    EXIF-Daten aus Handyfotos, also auch die GPS-Koordinaten der Aufnahme.
+    Prüfen liesse sich das nur mit Canvas in einer Browserumgebung — ein
+    eigener Schritt, an dem ein Datenschutzversprechen hängt.
 
 - [x] **Haus und Wohnung unterscheiden** (04.10.2026) - zwei Ebenen statt
   einer, umgesetzt als Selbstbezug `eltern_id` in `properties`. Eine Wohnung
