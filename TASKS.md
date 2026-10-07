@@ -129,6 +129,20 @@
 
 ## Done
 
+- [x] **Stockwerkeigentum: der Wert steht in der Wohnung** (07.10.2026) - die
+  Wertquote gewichtete den Massnahmenplan, aber nicht die Bewertung; dieselbe
+  Gemeinschaftsheizung zählte in der einen Zahl zu 8,5 Prozent und in der
+  anderen zu hundert. Ein Haus mit Quote unter 1000 ist jetzt ein Behälter
+  ohne Marktwert, und die Wohnung erbt die Gebäudeanlagen zu ihrer Quote.
+  Der Massnahmenplan bleibt unverändert: Er sammelt nach oben, der Wert
+  reicht nach unten durch.
+  - Offene Grenze: Die Quote hängt am Haus und bedeutet „mein Anteil am
+    Gebäude". Solange dort genau eine Wohnung dir gehört, ist das dasselbe
+    wie deren Wertquote. Gehören dir zwei Wohnungen im selben
+    Stockwerkeigentum, zöge jede den vollen Anteil — dann muss die Quote an
+    die Wohnung wandern. Bewusst nicht auf Verdacht gebaut.
+
+
 - [x] **Vorwarnung vor dem Beta-Ende** (05.10.2026) - zwei Stufen, 30 und 7
   Tage vorher. Merkliste je Konto **und** Stufe, sonst hätte die zweite
   Warnung die erste unterdrückt. Gewarnt wird nur, wer beim Beta-Ende etwas
@@ -217,9 +231,8 @@
     den Wohnungen. Dazu eine Objektzeile über den Reitern, das Anlagenregister
     des Hauses zeigt die Wohnungen mit, und die Massnahmenplanung des Hauses
     rechnet sie ein (Hausanlagen anteilig, Wohnungsanlagen voll).
-  - Noch nicht am Umbau beteiligt: Der Marktwert bleibt je Objekt und wird
-    nicht über Haus und Wohnungen zusammengezogen. Für eine Hausansicht, die
-    ihre Wohnungen aufsummiert, fehlt bisher die Oberfläche.
+  - Nachgezogen am 07.10.2026: Der Marktwert folgt jetzt derselben Logik,
+    aber in der anderen Richtung. Siehe den Eintrag unten.
 
 - [x] **Kurzbeschreibung je Tarif** (04.10.2026) - die Karten listeten Mengen,
   sagten aber nicht, wen die Stufe meint. Jetzt steht zwischen Preis und
