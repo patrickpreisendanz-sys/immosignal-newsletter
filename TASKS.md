@@ -147,6 +147,26 @@
 
 ## Done
 
+- [x] **Tarifstufen nach der Real-Estate-Management-Pyramide** (07.10.2026) -
+  Starter, Wohneigentum und Investor heissen jetzt Facility, Asset und
+  Portfolio. Die alten Namen waren eine Phase, eine Eigentumsform und eine
+  Rolle; „Wohneigentum" war überdies sachlich falsch, weil es das
+  selbstbewohnte Einfamilienhaus ausschliesst.
+  - Die Namen erzwangen eine Sortierung: Wartungen und Handwerkerkartei nach
+    Facility, Marktwert und Bewertungsrechnung nach Asset. Dadurch hat die
+    unterste Stufe erstmals einen eigenen Grund zu existieren.
+  - Facility und Asset sind in jeder Mengenzahl identisch (1 Haus,
+    2 Wohnungen, 20 Anlagen, 1 GB) und unterscheiden sich nur durch zwei
+    Merkmalsschalter. Preise unverändert 3/9/19.
+  - **Preis noch offen:** Facility trägt jetzt mehr und kostet weiterhin 3
+    Franken. Wer nur Wartungserinnerungen will, zahlt künftig 3 statt 9 —
+    bewusst in Kauf genommen, aber einmal nachrechnen.
+  - Zwei naheliegende Verstärkungen für Asset liegen halb im Code: die
+    steuerliche Jahresauswertung (werterhaltend ist abzugsfähig, der Anteil
+    wird bereits gerechnet) und die Wertentwicklung über Zeit (`wert_verlauf`
+    steht im Schema).
+
+
 - [x] **Massnahmenplan: Horizont wählbar, Rücklage rechnet richtig** (07.10.2026)
   - Die Sparrate war falsch: `totalKosten / (jahre × 12)` beantwortet, wie hoch
     die Durchschnittslast ist, nicht wie viel zurückzulegen ist, damit das Geld
