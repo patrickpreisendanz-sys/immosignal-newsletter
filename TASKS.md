@@ -132,6 +132,22 @@
 
 ## Done
 
+- [x] **Massnahmenplan: Horizont wählbar, Rücklage rechnet richtig** (07.10.2026)
+  - Die Sparrate war falsch: `totalKosten / (jahre × 12)` beantwortet, wie hoch
+    die Durchschnittslast ist, nicht wie viel zurückzulegen ist, damit das Geld
+    da ist, wenn die Rechnung kommt. Bei einer überfälligen Heizung für 35'000
+    nannte sie 692 Franken im Monat. Jetzt der grösste kumulierte Fehlbetrag
+    geteilt durch die Zeit bis dahin — die alte Formel war darin immer der
+    kleinste Kandidat.
+  - Was bereits fällig ist, steht als Rückstand daneben statt in der Rate und
+    verzehrt zuerst die vorhandene Rücklage.
+  - Schieber 5/10/15/20/25/30 Jahre, im Browser gemerkt, von Übersicht und Plan
+    geteilt. Neue Spalte `properties.ruecklage`, aggregiert wie die Kosten,
+    gegen die sie steht.
+  - Landingpage an zehn Stellen offener formuliert; die Zahlen in der
+    Hero-Abbildung nachgerechnet.
+
+
 - [x] **Stockwerkeigentum: der Wert steht in der Wohnung** (07.10.2026) - die
   Wertquote gewichtete den Massnahmenplan, aber nicht die Bewertung; dieselbe
   Gemeinschaftsheizung zählte in der einen Zahl zu 8,5 Prozent und in der
