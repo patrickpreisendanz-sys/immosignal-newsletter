@@ -118,6 +118,21 @@
   Anweisungen stehen im README der jeweiligen Funktion. Beim Aufräumlauf
   vorher einen Probelauf ansehen.
 
+- [ ] **`edge_function_ausloesen` den Funktionsnamen prüfen lassen** - die
+  Funktion (Migration `20261001180000`) hängt ihr Argument ungeprüft an die
+  URL und schickt das Cron-Geheimnis aus dem Vault als Kopfzeile mit.
+  - Kein Befund von heute, und kleiner als zunächst gesagt: Der Rumpf der URL
+    ist ein Literal, ein fremder Host lässt sich damit nicht erreichen - nur
+    ein anderer Pfad im selben Projekt. Geschützt ist sie ohnehin dadurch,
+    dass `execute` von `public`, `anon` und `authenticated` entzogen ist, und
+    alle Zeitpläne rufen sie mit Literalen auf.
+  - Zu tun bleibt die Absicherung gegen künftige Aufrufer: den Namen gegen
+    ein `^[a-z][a-z0-9-]*$` prüfen und sonst `raise exception`. Ein Aufruf
+    mit Nutzereingabe könnte das Geheimnis sonst an eine andere Funktion
+    desselben Projekts tragen.
+  - Gefunden bei der Sicherheitsdurchsicht vom 07.10.2026, die sonst nichts
+    über der Meldeschwelle ergab.
+
 - [ ] **Vorlage der Wartelisten-Übersicht auslagern** - sie steht in
   derselben Datei wie `Deno.serve`, ein Import würde also einen Server
   starten. Dadurch ist sie als einzige Mailvorlage ungetestet.
