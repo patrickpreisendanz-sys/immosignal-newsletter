@@ -122,7 +122,10 @@
   derselben Datei wie `Deno.serve`, ein Import würde also einen Server
   starten. Dadurch ist sie als einzige Mailvorlage ungetestet.
 
-- [ ] **Massnahmenplan mit echten Daten durchklicken** - bisher nur mit Testdaten geprüft
+- [ ] **Massnahmenplan mit echten Daten durchklicken** - die Wertquote ist am
+  07.10.2026 durchgeprüft (Haus 85/1000, Heizung 80'000, Wohnung mit eigener
+  Anlage; Plan, Bewertung und Objektliste stimmten). Offen bleibt der Rest
+  des Plans mit echtem Bestand.
 
 - [ ] **Investor-Ansicht** - Cashflow, Belehnung, Renditen; bewusst für Phase 2 zurückgestellt
   - Code liegt unter `pages/Investor`, die Route fehlt absichtlich
