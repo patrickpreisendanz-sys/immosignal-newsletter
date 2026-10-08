@@ -64,3 +64,13 @@ ImmoSignal als Newsletter. Arbeitet allein, ohne Team.
 - Auslieferung nur bei Änderungen an ausgelieferten Dateien (`paths`-Filter).
 - Passwörter, Bestätigungscodes und OAuth-Anmeldungen macht er selbst.
 - Geheimnisse gehen über die Zwischenablage, nicht durch den Chat.
+- **Migrationen über `supabase db push`, nicht von Hand in den SQL-Editor.**
+  Das Projekt ist verknüpft (`feingrund/supabase/.temp/project-ref`). Von Hand
+  eingefügte SQL läuft zwar, wird aber nicht in die Migrationstabelle
+  eingetragen — der nächste `push` versucht sie dann erneut und scheitert an
+  einer Stelle, die mit der eigentlichen Änderung nichts zu tun hat.
+  Ich gebe ihm also den `db push`-Befehl, nicht den Inhalt der Datei.
+  Ablauf: `supabase migration list` zum Vergleich, `db push --dry-run` als
+  Probe, dann `db push`. Ist etwas doch von Hand gelaufen, trägt
+  `supabase migration repair --status applied <version>` es nach, ohne es
+  nochmals auszuführen.
