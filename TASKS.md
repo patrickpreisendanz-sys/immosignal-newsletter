@@ -112,13 +112,10 @@
     Datenschutzerklärung; ob die Kurzform so stehen darf, ist die Frage.
 
 ## Someday
-- [ ] **Zwei Zeitpläne scharf stellen** - `beta-vorwarnung` und
-  `speicher-aufraeumen` sind gebaut und ausgeliefert, laufen aber nicht von
-  selbst. Beide verschicken Mails beziehungsweise löschen Dateien; die
-  Anweisungen stehen im README der jeweiligen Funktion. Beim Aufräumlauf
-  vorher einen Probelauf ansehen.
-
-- [ ] **`edge_function_ausloesen` den Funktionsnamen prüfen lassen** - die
+- [ ] **`edge_function_ausloesen`: Migration einspielen** - gebaut am
+  07.10.2026 (`20261007140000_funktionsname_pruefen.sql`), im Supabase-Editor
+  noch auszuführen. Beschreibung des Befunds unten.
+  - die
   Funktion (Migration `20261001180000`) hängt ihr Argument ungeprüft an die
   URL und schickt das Cron-Geheimnis aus dem Vault als Kopfzeile mit.
   - Kein Befund von heute, und kleiner als zunächst gesagt: Der Rumpf der URL
@@ -146,6 +143,11 @@
   - Code liegt unter `pages/Investor`, die Route fehlt absichtlich
 
 ## Done
+
+- [x] **Zwei Zeitpläne scharf stellen** (05.10.2026) - `beta-vorwarnung`
+  täglich 06:30 UTC, `speicher-aufraeumen` täglich 03:50 UTC mit
+  ausdrücklichem Löschauftrag. War nachzutragen.
+
 
 - [x] **Tarifstufen nach der Real-Estate-Management-Pyramide** (07.10.2026) -
   Starter, Wohneigentum und Investor heissen jetzt Facility, Asset und
