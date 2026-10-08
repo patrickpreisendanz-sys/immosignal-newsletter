@@ -126,6 +126,16 @@
 
 ## Done
 
+- [x] **Tarife nach der Beta-Strategie** (08.10.2026) - Facility kostenlos,
+  Asset 14, Portfolio 29; Beta mit 50 Prozent auf alle drei bis 31.03.2027.
+  Individuell steht als eigene Zeile unter dem Raster und führt in die Mail.
+  - Anlagen, Dokumente und Speicher zählen je Konto statt je Objekt.
+  - Wohneinheit statt „Wohnungen je Haus". Ein Haus ohne eigene Wohnungen
+    zählt selbst als eine — sonst wären zwanzig Einfamilienhäuser null.
+  - Wartungsplanung wieder ab Asset: Erinnerungen kosten Mailversand.
+  - **Preis von Facility** ist damit erledigt; der offene Punkt entfällt.
+
+
 - [x] **`edge_function_ausloesen` prüft den Funktionsnamen** (08.10.2026) -
   Befund der Sicherheitsdurchsicht vom 07.10. Die Funktion hängte ihr Argument
   ungeprüft an die URL und schickte das Cron-Geheimnis als Kopfzeile mit.
