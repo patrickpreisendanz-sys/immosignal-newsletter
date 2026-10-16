@@ -112,6 +112,18 @@
     Datenschutzerklärung; ob die Kurzform so stehen darf, ist die Frage.
 
 ## Someday
+- [ ] **Sperre scharf schalten, wenn die Zahlung steht** - die Spalte
+  `abonnements.zugang_gesperrt_am`, die Funktionen `zugang_gesperrt()` und
+  `konten_zum_loeschen()` sind eingespielt. Es fehlen drei Dinge, und alle
+  drei haengen an der Zahlungsabwicklung:
+  - Die Zeilenschutzregeln muessen gesperrten Konten das Lesen verwehren.
+    Heute ist die Sperre nur ein Datum ohne Wirkung.
+  - Der Export muss dann ueber eine Edge Function laufen, weil er heute mit
+    der Sitzung des Nutzers liest und von derselben Sperre getroffen waere.
+  - Der Aufraeumlauf nach drei Monaten samt zwei Vorwarnungen, wie bei
+    `beta-vorwarnung`. Bauen, aber erst scharf stellen, wenn echte Konten
+    gesperrt werden koennen.
+
 - [ ] **Vorlage der Wartelisten-Übersicht auslagern** - sie steht in
   derselben Datei wie `Deno.serve`, ein Import würde also einen Server
   starten. Dadurch ist sie als einzige Mailvorlage ungetestet.
@@ -125,6 +137,16 @@
   - Code liegt unter `pages/Investor`, die Route fehlt absichtlich
 
 ## Done
+
+- [x] **Datenexport und Kontoaufloesung** (16.10.2026) - beide Rechtstexte
+  verwiesen auf Funktionen, die es nicht gab. Jetzt gibt es sie: ein ZIP mit
+  CSV, JSON und den hinterlegten Dateien, und ein gefuehrter Weg zum
+  Aufloesen, der zuerst den Export anbietet.
+- [x] **Widerspruch in den AGB zur Kuendigung** (16.10.2026) - drei Stellen
+  sagten Verschiedenes ueber das Loeschen nach Vertragsende. Das Modell steht
+  jetzt an einer Stelle: Zugang sperren, nichts loeschen, nach drei Monaten
+  loeschen mit zwei Vorwarnungen.
+
 
 - [x] **Tarife nach der Beta-Strategie** (08.10.2026) - Facility kostenlos,
   Asset 14, Portfolio 29; Beta mit 50 Prozent auf alle drei bis 31.03.2027.
