@@ -22,6 +22,11 @@ ImmoSignal als Newsletter. Arbeitet allein, ohne Team.
   mit Varianten A/B. Gilt grundsätzlich, auch bei nur zwei Möglichkeiten.
 - Prüft Schritte gern anhand von Screenshots; erwartet dann genaue Angaben,
   welches Feld welchen Wert bekommt.
+- **Keine Gedankenstriche im sichtbaren Text.** Sie sind das deutlichste
+  Erkennungszeichen maschinell geschriebener Texte. Lieber zwei Sätze als einer
+  mit Strich in der Mitte. Ausnahme: der Strich als Platzhalter für „kein Wert“.
+  Dasselbe gilt für „nicht X, sondern Y“ als Stilfigur und für Dreierreihungen,
+  die nur des Rhythmus wegen dastehen.
 
 ## Projects
 
@@ -35,17 +40,20 @@ ImmoSignal als Newsletter. Arbeitet allein, ohne Team.
 
 | Begriff | Bedeutung |
 |---------|-----------|
-| Immobilie | Ein Objekt im Bestand (Haus oder Wohnung). Seit 28.09.2026 der Begriff im Produkt |
+| Immobilie | Ein Objekt im Bestand (Haus oder Wohneinheit). Seit 28.09.2026 der Begriff im Produkt |
 | Liegenschaft | Abgelöst durch „Immobilie". Lebt in Datenbank-Bezeichnern weiter (`max_liegenschaften`) |
 | Anlage | Bauteil mit Lebensdauer: Heizung, Dach, Fenster |
 | Nutzungsdauer | Wie lange eine Anlage hält, je Kategorie |
 | Ersatzkosten | Was der Ersatz einer Anlage kostet |
 | werterhaltend | Instandhaltung, steuerlich abzugsfähig |
 | wertvermehrend | Verbesserung, nicht abzugsfähig |
-| Massnahmenplan | 10-Jahres-Plan der fälligen Investitionen |
+| Massnahmenplan | Plan der fälligen Investitionen; der Horizont ist seit 07.10.2026 wählbar, 5 bis 30 Jahre |
 | stillgelegt | Immobilie/Anlage nur lesbar, weil der Tarif zu klein ist |
 | Tarif "keiner" | Kein Tarif gebucht — Konto lesbar, nicht beschreibbar |
-| Wohneigentum | Mittlere Tarifstufe, 9 CHF. Hiess bis 01.10.2026 „Essential"; der Enum-Wert in der Datenbank ist weiterhin `essential` |
+| Facility | Unterste Tarifstufe, kostenlos. Enum-Wert in der Datenbank: `starter` |
+| Asset | Mittlere Tarifstufe, 14 CHF. Hiess zuerst „Essential“, dann „Wohneigentum“; der Enum-Wert bleibt `essential` |
+| Portfolio | Oberste buchbare Stufe, 29 CHF. Enum-Wert: `investor` |
+| Wohneinheit | Das gezählte Objekt: jede Wohnung, und ein Haus so lange, wie keine Wohnung darin liegt. Der Enum-Wert des Typs bleibt `ETW` |
 
 ## Tools
 
